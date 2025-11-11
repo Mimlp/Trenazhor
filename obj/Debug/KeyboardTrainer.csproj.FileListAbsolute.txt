@@ -1,0 +1,12 @@
+C:\Users\julia\Documents\MyLABS\7 семестр\tp\project\KeyboardTrainer\bin\Debug\KeyboardTrainer.exe.config
+C:\Users\julia\Documents\MyLABS\7 семестр\tp\project\KeyboardTrainer\bin\Debug\KeyboardTrainer.exe
+C:\Users\julia\Documents\MyLABS\7 семестр\tp\project\KeyboardTrainer\bin\Debug\KeyboardTrainer.pdb
+C:\Users\julia\Documents\MyLABS\7 семестр\tp\project\KeyboardTrainer\obj\Debug\KeyboardTrainer.csproj.AssemblyReference.cache
+C:\Users\julia\Documents\MyLABS\7 семестр\tp\project\KeyboardTrainer\obj\Debug\KeyboardTrainer.Form1.resources
+C:\Users\julia\Documents\MyLABS\7 семестр\tp\project\KeyboardTrainer\obj\Debug\KeyboardTrainer.Properties.Resources.resources
+C:\Users\julia\Documents\MyLABS\7 семестр\tp\project\KeyboardTrainer\obj\Debug\KeyboardTrainer.csproj.GenerateResource.cache
+C:\Users\julia\Documents\MyLABS\7 семестр\tp\project\KeyboardTrainer\obj\Debug\KeyboardTrainer.csproj.CoreCompileInputs.cache
+C:\Users\julia\Documents\MyLABS\7 семестр\tp\project\KeyboardTrainer\obj\Debug\KeyboardTrainer.exe
+C:\Users\julia\Documents\MyLABS\7 семестр\tp\project\KeyboardTrainer\obj\Debug\KeyboardTrainer.pdb
+C:\Users\julia\Documents\MyLABS\7 семестр\tp\project\KeyboardTrainer\obj\Debug\KeyboardTrainer.exe.config
+C:\Users\julia\Documents\MyLABS\7 семестр\tp\project\KeyboardTrainer\obj\Debug\KeyboardTrainer.Form2.resources

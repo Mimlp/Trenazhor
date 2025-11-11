@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Trenazhor.Properties
+namespace KeyboardTrainer.Properties
 {
 
 

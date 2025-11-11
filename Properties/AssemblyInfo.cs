@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов для изменения сведений,
 // связанных со сборкой.
-[assembly: AssemblyTitle("Trenazhor")]
+[assembly: AssemblyTitle("KeyboardTrainer")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Trenazhor")]
+[assembly: AssemblyProduct("KeyboardTrainer")]
 [assembly: AssemblyCopyright("Copyright ©  2025")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("be2fa2aa-1393-439e-b14a-b2e102052494")]
+[assembly: Guid("92d809f2-400e-46bb-aa38-c936d96a545f")]
 
 // Сведения о версии сборки состоят из указанных ниже четырех значений:
 //
