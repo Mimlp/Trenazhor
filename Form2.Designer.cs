@@ -33,8 +33,11 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.contentPanel = new System.Windows.Forms.Panel();
+            this.exercisesPanel = new System.Windows.Forms.Panel();
+            this.rtbDescription = new System.Windows.Forms.RichTextBox();
+            this.contentPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -46,6 +49,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(188, 48);
             this.button1.TabIndex = 0;
+            this.button1.Tag = "Beginner";
             this.button1.Text = "Новичок";
             this.button1.UseVisualStyleBackColor = false;
             // 
@@ -58,6 +62,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(188, 48);
             this.button2.TabIndex = 1;
+            this.button2.Tag = "Student";
             this.button2.Text = "Ученик";
             this.button2.UseVisualStyleBackColor = false;
             // 
@@ -70,6 +75,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(188, 48);
             this.button3.TabIndex = 2;
+            this.button3.Tag = "Master";
             this.button3.Text = "Мастер клавиш";
             this.button3.UseVisualStyleBackColor = false;
             // 
@@ -82,6 +88,7 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(188, 48);
             this.button4.TabIndex = 3;
+            this.button4.Tag = "Expert";
             this.button4.Text = "Эксперт скорости";
             this.button4.UseVisualStyleBackColor = false;
             // 
@@ -94,17 +101,9 @@
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(188, 48);
             this.button5.TabIndex = 4;
+            this.button5.Tag = "Ninja";
             this.button5.Text = "Ниндзя";
             this.button5.UseVisualStyleBackColor = false;
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 20;
-            this.listBox1.Location = new System.Drawing.Point(22, 101);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(1158, 264);
-            this.listBox1.TabIndex = 5;
             // 
             // label1
             // 
@@ -117,14 +116,38 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "<- В главное меню";
             // 
+            // contentPanel
+            // 
+            this.contentPanel.Controls.Add(this.rtbDescription);
+            this.contentPanel.Controls.Add(this.exercisesPanel);
+            this.contentPanel.Location = new System.Drawing.Point(22, 69);
+            this.contentPanel.Name = "contentPanel";
+            this.contentPanel.Size = new System.Drawing.Size(1145, 581);
+            this.contentPanel.TabIndex = 9;
+            // 
+            // exercisesPanel
+            // 
+            this.exercisesPanel.Location = new System.Drawing.Point(3, 3);
+            this.exercisesPanel.Name = "exercisesPanel";
+            this.exercisesPanel.Size = new System.Drawing.Size(1139, 373);
+            this.exercisesPanel.TabIndex = 0;
+            // 
+            // rtbDescription
+            // 
+            this.rtbDescription.Location = new System.Drawing.Point(3, 382);
+            this.rtbDescription.Name = "rtbDescription";
+            this.rtbDescription.Size = new System.Drawing.Size(573, 196);
+            this.rtbDescription.TabIndex = 1;
+            this.rtbDescription.Text = "";
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Lavender;
             this.ClientSize = new System.Drawing.Size(1192, 723);
+            this.Controls.Add(this.contentPanel);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
@@ -132,6 +155,7 @@
             this.Controls.Add(this.button1);
             this.Name = "Form2";
             this.Text = "Список уровней";
+            this.contentPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -144,7 +168,9 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel contentPanel;
+        private System.Windows.Forms.RichTextBox rtbDescription;
+        private System.Windows.Forms.Panel exercisesPanel;
     }
 }
