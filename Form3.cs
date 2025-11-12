@@ -31,5 +31,10 @@ namespace KeyboardTrainer
                 e.Graphics.FillRectangle(brush, this.ClientRectangle);
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

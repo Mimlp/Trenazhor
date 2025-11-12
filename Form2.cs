@@ -24,7 +24,7 @@ namespace KeyboardTrainer
         }
 
         private readonly string connString =
-            "Host=localhost;Port=5432;Username=postgres;Password=СВОЙ_ПАРОЛЬ;Database=Trenazhor";
+            "Host=localhost;Port=5432;Username=postgres;Password=Krendel25;Database=Trenazhor";
         private readonly string[] levelButtons = new[] { "Beginner", "Student", "Master", "Expert", "Ninja" };
 
         private void InitializeForm()
