@@ -94,7 +94,14 @@ namespace KeyboardTrainer
         private void button1_Click(object sender, EventArgs e)
         {
             Form2 form2 = new Form2();
-            form2.ShowDialog();
+            form2.Show();
+            this.Hide();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Form1 form1 = new Form1();
+            form1.Show();
             this.Hide();
         }
     }

@@ -36,5 +36,12 @@ namespace KeyboardTrainer
         {
             
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Form1 regForm = new Form1();
+            regForm.Show();
+            this.Hide();
+        }
     }
 }
