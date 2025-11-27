@@ -34,12 +34,16 @@ namespace KeyboardTrainer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            ExercisesAdmin eaPanel = new ExercisesAdmin();
+            eaPanel.FormClosed += (s, args) => this.Close();
+            eaPanel.Show();
+            this.Hide();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             Form1 regForm = new Form1();
+            regForm.FormClosed += (s, args) => this.Close();
             regForm.Show();
             this.Hide();
         }

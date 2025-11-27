@@ -158,6 +158,7 @@ namespace KeyboardTrainer
                             // Успешный вход
                             MessageBox.Show($"Добро пожаловать, администратор!");
                             Form3 adminPanel = new Form3();
+                            adminPanel.FormClosed += (s, args) => this.Close();
                             adminPanel.Show();
                             this.Hide();
                         }
@@ -208,6 +209,7 @@ namespace KeyboardTrainer
                             if (role.Equals("user", StringComparison.OrdinalIgnoreCase))
                             {
                                 Form4 uselForm = new Form4();
+                                uselForm.FormClosed += (s, args) => this.Close();
                                 uselForm.Show();
                                 this.Hide();
                             }
@@ -319,6 +321,7 @@ namespace KeyboardTrainer
                             textBox4.Text = "";
                             textBox3.Text = "";
                             Form4 uselForm = new Form4();
+                            uselForm.FormClosed += (s, args) => this.Close();
                             uselForm.Show();
                             this.Hide();
                         }
