@@ -1,14 +1,46 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\julia\\Documents\\GitHub\\Trenaz\\Trenazhor\\",
+  "WorkspaceRootPath": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Trenazhor\\Trenazhor\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|c:\\users\\julia\\documents\\github\\trenaz\\trenazhor\\create.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Trenazhor\\Trenazhor\\form4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:form4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Trenazhor\\Trenazhor\\create.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:create.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|c:\\users\\julia\\documents\\github\\trenaz\\trenazhor\\form4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:form4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Trenazhor\\Trenazhor\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Trenazhor\\Trenazhor\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Trenazhor\\Trenazhor\\exercisesadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:exercisesadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Trenazhor\\Trenazhor\\create.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:create.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|c:\\users\\krend\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0443\u0447\u0451\u0431\u0430\\\u043B\u0430\u0431\u044B\\\u0442\u043F\\trenazhor\\trenazhor\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|c:\\users\\krend\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0443\u0447\u0451\u0431\u0430\\\u043B\u0430\u0431\u044B\\\u0442\u043F\\trenazhor\\trenazhor\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|c:\\users\\krend\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0443\u0447\u0451\u0431\u0430\\\u043B\u0430\u0431\u044B\\\u0442\u043F\\trenazhor\\trenazhor\\form4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:form4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|c:\\users\\krend\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0443\u0447\u0451\u0431\u0430\\\u043B\u0430\u0431\u044B\\\u0442\u043F\\trenazhor\\trenazhor\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,30 +50,132 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 10,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Create.cs",
-              "DocumentMoniker": "C:\\Users\\julia\\Documents\\GitHub\\Trenaz\\Trenazhor\\Create.cs",
+              "DocumentIndex": 9,
+              "Title": "Form2.cs",
+              "DocumentMoniker": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Trenazhor\\Trenazhor\\Form2.cs",
+              "RelativeDocumentMoniker": "Form2.cs",
+              "ToolTip": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Trenazhor\\Trenazhor\\Form2.cs",
+              "RelativeToolTip": "Form2.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAADgv8EAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-28T09:28:28.034Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Form4.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Trenazhor\\Trenazhor\\Form4.cs",
+              "RelativeDocumentMoniker": "Form4.cs",
+              "ToolTip": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Trenazhor\\Trenazhor\\Form4.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "Form4.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-28T08:45:42.939Z",
+              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Form3.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Trenazhor\\Trenazhor\\Form3.cs",
+              "RelativeDocumentMoniker": "Form3.cs",
+              "ToolTip": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Trenazhor\\Trenazhor\\Form3.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "Form3.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-28T08:45:41.705Z",
+              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Trenazhor\\Trenazhor\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Trenazhor\\Trenazhor\\Form1.cs",
+              "RelativeToolTip": "Form1.cs",
+              "ViewState": "AgIAAFIAAAAAAAAAAAAtwFwAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-28T06:59:56.006Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Create.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Trenazhor\\Trenazhor\\Create.cs",
               "RelativeDocumentMoniker": "Create.cs",
-              "ToolTip": "C:\\Users\\julia\\Documents\\GitHub\\Trenaz\\Trenazhor\\Create.cs",
+              "ToolTip": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Trenazhor\\Trenazhor\\Create.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "Create.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-28T06:59:23.487Z",
+              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ExercisesAdmin.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Trenazhor\\Trenazhor\\ExercisesAdmin.cs",
+              "RelativeDocumentMoniker": "ExercisesAdmin.cs",
+              "ToolTip": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Trenazhor\\Trenazhor\\ExercisesAdmin.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "ExercisesAdmin.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-28T06:59:21.684Z",
+              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Form2.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Trenazhor\\Trenazhor\\Form2.cs",
+              "RelativeDocumentMoniker": "Form2.cs",
+              "ToolTip": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Trenazhor\\Trenazhor\\Form2.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "Form2.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-28T06:59:20.312Z",
+              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Trenazhor\\Trenazhor\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Trenazhor\\Trenazhor\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-28T06:59:17.795Z",
+              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Create.cs",
+              "DocumentMoniker": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Trenazhor\\Trenazhor\\Create.cs",
+              "RelativeDocumentMoniker": "Create.cs",
+              "ToolTip": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Trenazhor\\Trenazhor\\Create.cs",
               "RelativeToolTip": "Create.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAA1wC8AAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAAEYAAAAAAAAAAAA1wFIAAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-27T11:44:21.894Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Form4.cs",
-              "DocumentMoniker": "C:\\Users\\julia\\Documents\\GitHub\\Trenaz\\Trenazhor\\Form4.cs",
+              "DocumentMoniker": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Trenazhor\\Trenazhor\\Form4.cs",
               "RelativeDocumentMoniker": "Form4.cs",
-              "ToolTip": "C:\\Users\\julia\\Documents\\GitHub\\Trenaz\\Trenazhor\\Form4.cs",
+              "ToolTip": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Trenazhor\\Trenazhor\\Form4.cs",
               "RelativeToolTip": "Form4.cs",
-              "ViewState": "AgIAAF0AAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-27T11:44:10.739Z",
               "EditorCaption": ""

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -78,12 +79,178 @@ namespace KeyboardTrainer
                 richTextBox1.Visible = false;
             }
         }
+        private readonly string connString =
+    "Host=localhost;Port=5432;Username=postgres;Password=СВОЙ_ПАРОЛЬ;Database=Trenazhor";
 
         private void button2_Click(object sender, EventArgs e)
         {
             if (comboBox1.SelectedIndex == 0)
             {
-                MessageBox.Show("Выберите уровень сложности","Ошибка",MessageBoxButtons.OK);
+                MessageBox.Show("Выберите уровень сложности", "Ошибка", MessageBoxButtons.OK);
+            }
+            else
+            {
+                int len;
+                if ((textBox1.Text == ""))
+                {
+                    MessageBox.Show("Введите название упражнения");
+                }
+                else if (!int.TryParse(textBox3.Text, out len))
+                {
+                    MessageBox.Show("Введите длину упражнения");
+                }
+                else
+                {
+                    string ex_name = textBox1.Text;
+                    string level_name = comboBox1.SelectedItem.ToString();
+                    string ex_text;
+
+                    // Получаем символы для выбранного уровня
+                    string symbols = GetSymbolsByLevelName(level_name);
+
+                    if (string.IsNullOrEmpty(symbols))
+                    {
+                        MessageBox.Show("Для выбранного уровня не найдены символы клавиатурных зон");
+                        return;
+                    }
+
+                    if (checkBox1.Checked)
+                    {
+                        if (richTextBox1.Text.Length != len)
+                        {
+                            MessageBox.Show("Длина введённого текста не соответствует длине упражнения!");
+                        }
+                        else
+                        {
+                            ex_text = richTextBox1.Text;
+
+                            // Добавляем упражнение в базу
+                            AddExercise(ex_name, len, ex_text, level_name);
+                        }
+                    }
+                    else
+                    {
+                        // Генерируем текст из символов зоны клавиатуры
+                        ex_text = GenerateTextFromSymbols(symbols, len);
+                        // Добавляем упражнение в базу
+                        AddExercise(ex_name, len, ex_text, level_name);
+                    }
+                }
+            }
+        }
+
+        // Метод для получения символов по названию уровня
+        private string GetSymbolsByLevelName(string levelName)
+        {
+            try
+            {
+                using (var conn = new NpgsqlConnection(connString))
+                {
+                    conn.Open();
+
+                    string sql = @"
+                SELECT kz.symbols
+                FROM keyboard_zone kz
+                INNER JOIN keyboard_zone_level kzl ON kz.zone_id = kzl.zone_id
+                INNER JOIN level l ON kzl.level_id = l.level_id
+                WHERE l.level_name = @levelName";
+
+                    using (var cmd = new NpgsqlCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@levelName", levelName);
+
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            // Собираем все символы в одну строку
+                            var allSymbols = new StringBuilder();
+                            while (reader.Read())
+                            {
+                                allSymbols.Append(reader.GetString(0));
+                            }
+                            return allSymbols.ToString();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при получении символов: {ex.Message}");
+                return null;
+            }
+        }
+
+        // Метод для генерации текста из символов
+        private string GenerateTextFromSymbols(string symbols, int length)
+        {
+            if (string.IsNullOrEmpty(symbols)) return "";
+
+            var random = new Random();
+            var result = new StringBuilder();
+
+            for (int i = 0; i < length; i++)
+            {
+                // Случайно выбираем символ из доступных
+                int index = random.Next(symbols.Length);
+                result.Append(symbols[index]);
+
+                // Добавляем пробелы для читаемости (каждые 5 символов)
+                if ((i + 1) % 5 == 0 && i < length - 1)
+                {
+                    result.Append(' ');
+                }
+            }
+
+            return result.ToString();
+        }
+
+        // Метод для добавления упражнения в базу
+        private void AddExercise(string name, int length, string text, string levelName)
+        {
+            try
+            {
+                using (var conn = new NpgsqlConnection(connString))
+                {
+                    conn.Open();
+
+                    // Сначала получаем level_id по названию уровня
+                    string getLevelIdSql = "SELECT level_id FROM level WHERE level_name = @levelName";
+                    int levelId;
+
+                    using (var cmd = new NpgsqlCommand(getLevelIdSql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@levelName", levelName);
+                        levelId = (int)cmd.ExecuteScalar();
+                    }
+
+                    // Затем добавляем упражнение
+                    string insertSql = @"
+                INSERT INTO exercise (name, length, text, level_id) 
+                VALUES (@name, @length, @text, @levelId)";
+
+                    using (var cmd = new NpgsqlCommand(insertSql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@name", name);
+                        cmd.Parameters.AddWithValue("@length", length);
+                        cmd.Parameters.AddWithValue("@text", text);
+                        cmd.Parameters.AddWithValue("@levelId", levelId);
+
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Упражнение успешно добавлено!");
+                            // Очищаем поля после успешного добавления
+                            textBox1.Text = "";
+                            textBox3.Text = "";
+                            richTextBox1.Text = "";
+                            comboBox1.SelectedIndex = 0;
+                            checkBox1.Checked = false;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при добавлении упражнения: {ex.Message}");
             }
         }
     }
