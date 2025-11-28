@@ -80,7 +80,7 @@ namespace KeyboardTrainer
             }
         }
         private readonly string connString =
-    "Host=localhost;Port=5432;Username=postgres;Password=Krendel25;Database=Trenazhor";
+    "Host=localhost;Port=5432;Username=postgres;Password=СВОЙ_ПАРОЛЬ;Database=Trenazhor";
 
         private void button2_Click(object sender, EventArgs e)
         {
