@@ -40,10 +40,10 @@
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.checkBox1.Location = new System.Drawing.Point(185, 425);
+            this.checkBox1.Location = new System.Drawing.Point(164, 340);
             this.checkBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(233, 24);
+            this.checkBox1.Size = new System.Drawing.Size(198, 20);
             this.checkBox1.TabIndex = 23;
             this.checkBox1.Text = "войти как администратор";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -52,29 +52,30 @@
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(238, 345);
+            this.button1.Location = new System.Drawing.Point(212, 276);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(125, 45);
+            this.button1.Size = new System.Drawing.Size(111, 36);
             this.button1.TabIndex = 22;
             this.button1.Text = "Войти";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(138, 281);
+            this.textBox2.Location = new System.Drawing.Point(123, 225);
             this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox2.Name = "textBox2";
             this.textBox2.PasswordChar = '*';
-            this.textBox2.Size = new System.Drawing.Size(348, 26);
+            this.textBox2.Size = new System.Drawing.Size(310, 22);
             this.textBox2.TabIndex = 21;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(138, 214);
+            this.textBox1.Location = new System.Drawing.Point(123, 171);
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(348, 26);
+            this.textBox1.Size = new System.Drawing.Size(310, 22);
             this.textBox1.TabIndex = 20;
             // 
             // label1
@@ -82,9 +83,9 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("MS Reference Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(131, 135);
+            this.label1.Location = new System.Drawing.Point(116, 108);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(355, 40);
+            this.label1.Size = new System.Drawing.Size(303, 34);
             this.label1.TabIndex = 18;
             this.label1.Text = "Добро пожаловать!";
             // 
@@ -92,9 +93,10 @@
             // 
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(138)))), ((int)(((byte)(0)))));
             this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Location = new System.Drawing.Point(446, 587);
+            this.button2.Location = new System.Drawing.Point(396, 470);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(146, 38);
+            this.button2.Size = new System.Drawing.Size(130, 30);
             this.button2.TabIndex = 24;
             this.button2.Text = "Регистрация";
             this.button2.UseVisualStyleBackColor = false;
@@ -102,10 +104,10 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.ClientSize = new System.Drawing.Size(616, 656);
+            this.ClientSize = new System.Drawing.Size(548, 525);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button1);

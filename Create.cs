@@ -80,7 +80,7 @@ namespace KeyboardTrainer
             }
         }
         private readonly string connString =
-    "Host=localhost;Port=5432;Username=postgres;Password=СВОЙ_ПАРОЛЬ;Database=Trenazhor";
+    "Host=localhost;Port=5432;Username=postgres;Password=Krendel25;Database=Trenazhor";
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -91,7 +91,7 @@ namespace KeyboardTrainer
             else
             {
                 int len;
-                if ((textBox1.Text == ""))
+                if ((textBox1.Text == String.Empty) || textBox1.Text == "Наименование упражнения")
                 {
                     MessageBox.Show("Введите название упражнения");
                 }
@@ -119,24 +119,58 @@ namespace KeyboardTrainer
                         if (richTextBox1.Text.Length != len)
                         {
                             MessageBox.Show("Длина введённого текста не соответствует длине упражнения!");
+                            return;
                         }
-                        else
-                        {
-                            ex_text = richTextBox1.Text;
 
-                            // Добавляем упражнение в базу
-                            AddExercise(ex_name, len, ex_text, level_name);
+                        ex_text = richTextBox1.Text;
+
+                        // ПРОВЕРКА: все ли символы в тексте соответствуют уровню
+                        string invalidChars = CheckTextForLevel(ex_text, symbols);
+                        if (!string.IsNullOrEmpty(invalidChars))
+                        {
+                            MessageBox.Show($"Текст содержит символы, не соответствующие уровню '{level_name}':\n{invalidChars}",
+                                          "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
                         }
+
+                        // Добавляем упражнение в базу
+                        AddExercise(ex_name, len, ex_text, level_name);
                     }
                     else
                     {
                         // Генерируем текст из символов зоны клавиатуры
                         ex_text = GenerateTextFromSymbols(symbols, len);
+
                         // Добавляем упражнение в базу
                         AddExercise(ex_name, len, ex_text, level_name);
                     }
                 }
             }
+        }
+
+        // МЕТОД ДЛЯ ПРОВЕРКИ СООТВЕТСТВИЯ СИМВОЛОВ УРОВНЮ
+        private string CheckTextForLevel(string text, string allowedSymbols)
+        {
+            // Создаем HashSet для быстрого поиска разрешенных символов
+            var allowedSet = new HashSet<char>(allowedSymbols);
+
+            // Добавляем пробел как разрешенный символ (для разделения слов)
+            allowedSet.Add(' ');
+            allowedSet.Add('\n'); // если есть переносы строк
+            allowedSet.Add('\r'); // возврат каретки
+            allowedSet.Add('\t'); // табуляция
+
+            // Находим все символы, которых нет в разрешенных
+            var invalidChars = text
+                .Where(c => !allowedSet.Contains(c))
+                .Distinct()
+                .ToArray();
+
+            if (invalidChars.Length == 0)
+                return null; // Все символы допустимы
+
+            // Формируем сообщение с недопустимыми символами
+            return $"Недопустимые символы: {string.Join(", ", invalidChars.Select(c => $"'{c}'"))}";
         }
 
         // Метод для получения символов по названию уровня
@@ -167,7 +201,10 @@ namespace KeyboardTrainer
                             {
                                 allSymbols.Append(reader.GetString(0));
                             }
-                            return allSymbols.ToString();
+
+                            // Убираем дубликаты символов для удобства
+                            var uniqueSymbols = new string(allSymbols.ToString().Distinct().ToArray());
+                            return uniqueSymbols;
                         }
                     }
                 }
@@ -193,8 +230,8 @@ namespace KeyboardTrainer
                 int index = random.Next(symbols.Length);
                 result.Append(symbols[index]);
 
-                // Добавляем пробелы для читаемости (каждые 5 символов)
-                if ((i + 1) % 5 == 0 && i < length - 1)
+                // Добавляем пробелы для читаемости (каждые 3-7 символов)
+                if ((i + 1) % random.Next(3, 8) == 0 && i < length - 1)
                 {
                     result.Append(' ');
                 }

@@ -70,7 +70,7 @@ namespace KeyboardTrainer
             };
         }
         private readonly string connString =
-            "Host=localhost;Port=5432;Username=postgres;Password=СВОЙ_ПАРОЛЬ;Database=Trenazhor";
+            "Host=localhost;Port=5432;Username=postgres;Password=Krendel25;Database=Trenazhor";
         private void button2_Click(object sender, EventArgs e)
         {
             string login = textBox4.Text.Trim();
