@@ -206,3 +206,5 @@ C:\Users\krend\OneDrive\Документы\Учёба\Лабы\тп\Trenazhor\Tr
 C:\Users\krend\OneDrive\Документы\Учёба\Лабы\тп\Trenazhor\Trenazhor\obj\Debug\Keyboard.5292ABBC.Up2Date
 C:\Users\krend\OneDrive\Документы\Учёба\Лабы\тп\Trenazhor\Trenazhor\obj\Debug\KeyboardTrainer.exe
 C:\Users\krend\OneDrive\Документы\Учёба\Лабы\тп\Trenazhor\Trenazhor\obj\Debug\KeyboardTrainer.pdb
+C:\Users\julia\Documents\GitHub\Trenaz\Trenazhor\obj\Debug\KeyboardTrainer.Open.resources
+C:\Users\julia\Documents\GitHub\Trenaz\Trenazhor\obj\Debug\KeyboardTrainer.Registration.resources
