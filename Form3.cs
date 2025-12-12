@@ -47,5 +47,13 @@ namespace KeyboardTrainer
             regForm.Show();
             this.Hide();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ListUsers lu = new ListUsers();
+            lu.FormClosed += (s, args) => this.Close();
+            lu.Show();
+            this.Hide();
+        }
     }
 }
