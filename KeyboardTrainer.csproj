@@ -157,6 +157,12 @@
     <Compile Include="StatisticsAdmin.Designer.cs">
       <DependentUpon>StatisticsAdmin.cs</DependentUpon>
     </Compile>
+    <Compile Include="StatisticsUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StatisticsUser.Designer.cs">
+      <DependentUpon>StatisticsUser.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Create.resx">
       <DependentUpon>Create.cs</DependentUpon>
     </EmbeddedResource>
@@ -195,6 +201,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StatisticsAdmin.resx">
       <DependentUpon>StatisticsAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StatisticsUser.resx">
+      <DependentUpon>StatisticsUser.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
