@@ -71,6 +71,7 @@
             this.button3.TabIndex = 2;
             this.button3.Text = "Статистика";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 

@@ -55,5 +55,13 @@ namespace KeyboardTrainer
             lu.Show();
             this.Hide();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            StatisticsAdmin sa = new StatisticsAdmin();
+            sa.FormClosed += (s, args) => this.Close();
+            sa.Show();
+            this.Hide();
+        }
     }
 }

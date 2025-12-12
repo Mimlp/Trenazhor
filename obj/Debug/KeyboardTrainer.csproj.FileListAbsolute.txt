@@ -211,3 +211,4 @@ C:\Users\julia\Documents\GitHub\Trenaz\Trenazhor\obj\Debug\KeyboardTrainer.Regis
 C:\Users\krend\OneDrive\Документы\Учёба\Лабы\тп\Trenazhor\Trenazhor\obj\Debug\KeyboardTrainer.Open.resources
 C:\Users\krend\OneDrive\Документы\Учёба\Лабы\тп\Trenazhor\Trenazhor\obj\Debug\KeyboardTrainer.Registration.resources
 C:\Users\julia\Documents\GitHub\Trenaz\Trenazhor\obj\Debug\KeyboardTrainer.ListUsers.resources
+C:\Users\julia\Documents\GitHub\Trenaz\Trenazhor\obj\Debug\KeyboardTrainer.StatisticsAdmin.resources

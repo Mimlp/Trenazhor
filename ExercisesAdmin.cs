@@ -102,7 +102,7 @@ namespace KeyboardTrainer
 
         private void label1_Click(object sender, EventArgs e)
         {
-            Form1 mM = new Form1();
+            Form3 mM = new Form3();
             mM.FormClosed += (s, args) => this.Close();
             mM.Show();
             this.Hide();
