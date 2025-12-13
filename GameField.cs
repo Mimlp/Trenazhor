@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,111 +23,161 @@ namespace KeyboardTrainer
         public GameField()
         {
             InitializeComponent();
-            InitializeTrainer();
+            InitializeGame();
 
-            this.DoubleBuffered = true;
+            pnlTextContainer.Paint += Panel_Paint;
 
-            this.KeyPreview = true;
-            this.KeyPress += Form_KeyPress;
+            this.Controls.Add(pnlTextContainer);
 
-            cursorTimer.Interval = System.Windows.Forms.SystemInformation.CaretBlinkTime;
+            this.KeyPress += GameField_KeyPress;
+
+            cursorTimer = new Timer();
+            cursorTimer.Interval = SystemInformation.CaretBlinkTime;
             cursorTimer.Tick += CursorTimer_Tick;
             cursorTimer.Start();
+
+            this.Shown += (s, e) => this.Focus();
         }
-        private void InitializeTrainer()
+        
+        private void InitializeGame()
         {
             sourceText = "Привет, это тренировочный текст!";
             currentPosition = 0;
-            lblText.BackColor = Color.Transparent;
-            UpdateDisplay();
-        }
-
-        private void UpdateDisplay()
-        {
-            if (currentPosition >= sourceText.Length)
-            {
-                lblText.Text = "Текст завершён!";
-                cursorTimer.Stop();
-                return;
-            }
-
-            lblText.Invalidate();
+            err = false;
             cursorVisible = true;
         }
 
         private void CursorTimer_Tick(object sender, EventArgs e)
         {
             cursorVisible = !cursorVisible;
-            lblText.Invalidate();
+            pnlTextContainer.Invalidate();
         }
 
-        private void Form_KeyPress(object sender, KeyPressEventArgs e)
+        private void GameField_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (char.IsControl(e.KeyChar)) return;
+            if (currentPosition >= sourceText.Length)
+                return;
 
-            char inputChar = e.KeyChar;
-            if (currentPosition < sourceText.Length)
+            if (char.IsControl(e.KeyChar))
+                return;
+
+            char expected = sourceText[currentPosition];
+
+            if (char.ToLower(e.KeyChar) == char.ToLower(expected))
             {
-                char expectedChar = sourceText[currentPosition];
-
-                if (char.ToLower(inputChar) == char.ToLower(expectedChar))
-                {
-                    currentPosition++;
-                    err = false;
-                }
-                else
-                {
-                    err = true;
-                }
-
-                UpdateDisplay();
+                currentPosition++;
+                err = false;
             }
+            else
+            {
+                err = true;
+            }
+
+            pnlTextContainer.Invalidate();
         }
 
-        private void lblText_Paint(object sender, PaintEventArgs e)
+        private void Panel_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            g.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
 
-            using (var font = lblText.Font)
-            using (var blackBrush = new SolidBrush(Color.Black))
-            using (var errBrush = new SolidBrush(Color.Red))
-            using (var cursorPen = new Pen(Color.Blue, 2)) 
-            using (var underlinePen = new Pen(Color.Gray, 1))
+            Font font = pnlTextContainer.Font;
+            float textHeight = g.MeasureString("X", font).Height;
+
+            float centerY = pnlTextContainer.Height / 2f - textHeight / 2f;
+            float cursorX = pnlTextContainer.Width / 2f;
+
+            float underlineY = pnlTextContainer.Height / 2f + textHeight / 2f + 6;
+            g.DrawLine(Pens.Gray, 0, underlineY, pnlTextContainer.Width, underlineY);
+
+            if (currentPosition >= sourceText.Length)
             {
-                float x = 0;
-                float textHeight = g.MeasureString("X", font).Height;
-                float y = (lblText.Height - textHeight) / 2;
+                string done = "Текст завершён!";
+                SizeF size = g.MeasureString(done, font);
+                g.DrawString(done, font, Brushes.Green,
+                    (pnlTextContainer.Width - size.Width) / 2,
+                    centerY);
+                return;
+            }
 
-                if (currentPosition >= sourceText.Length) return;
+            string remaining = sourceText.Substring(currentPosition);
 
-                string remainingText = sourceText.Substring(currentPosition);
+            Brush firstBrush = err ? Brushes.Red : Brushes.MediumBlue;
+            g.DrawString(remaining[0].ToString(), font, firstBrush, cursorX, centerY);
 
-                float underlineY = lblText.Height / 2f + 10; 
-                g.DrawLine(underlinePen, 0, underlineY, lblText.Width, underlineY);
-                float cursorXPosition = 0;
+            if (remaining.Length > 1)
+            {
+                float firstWidth = g.MeasureString(remaining[0].ToString(), font).Width;
+                g.DrawString(
+                    remaining.Substring(1),
+                    font,
+                    Brushes.Black,
+                    cursorX + firstWidth,
+                    centerY);
+            }
 
-                if (err && remainingText.Length > 0)
-                {
-                    string firstChar = remainingText[0].ToString();
-                    g.DrawString(firstChar, font, errBrush, x, y);
-
-                    if (remainingText.Length > 1)
-                    {
-                        SizeF firstCharSize = g.MeasureString(firstChar, font);
-                        g.DrawString(remainingText.Substring(1), font, blackBrush, x + firstCharSize.Width, y);
-                    }
-                }
-                else
-                {
-                    g.DrawString(remainingText, font, blackBrush, x, y);
-                }
-
-                if (cursorVisible && currentPosition < sourceText.Length)
-                {
-                    g.DrawLine(cursorPen, cursorXPosition, y, cursorXPosition, y + textHeight);
-                }
+            if (cursorVisible)
+            {
+                g.DrawLine(
+                    Pens.Blue,
+                    cursorX - 2,
+                    centerY,
+                    cursorX - 2,
+                    centerY + textHeight);
             }
         }
+        //protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        //{
+        //    if (keyData == Keys.Shift || keyData == Keys.Control || keyData == Keys.Alt)
+        //        return base.ProcessCmdKey(ref msg, keyData);
+
+        //    char c = GetCharFromKey(keyData);
+        //    if (c == '\0')
+        //        return base.ProcessCmdKey(ref msg, keyData);
+
+        //    HandleInput(c);
+        //    return true; 
+        //}
+        //private void HandleInput(char input)
+        //{
+        //    if (currentPosition >= sourceText.Length)
+        //        return;
+
+        //    char expected = sourceText[currentPosition];
+
+        //    if (char.ToLower(input) == char.ToLower(expected))
+        //    {
+        //        currentPosition++;
+        //        err = false;
+        //    }
+        //    else
+        //    {
+        //        err = true;
+        //    }
+
+        //    pnlTextContainer.Invalidate();
+        //}
+
+        //private char GetCharFromKey(Keys key)
+        //{
+        //    if (key >= Keys.A && key <= Keys.Z)
+        //        return (char)('a' + (key - Keys.A));
+
+        //    if (key >= Keys.D0 && key <= Keys.D9)
+        //        return (char)('0' + (key - Keys.D0));
+
+        //    if (key >= Keys.Space)
+        //        return ' ';
+
+        //    return '\0';
+        //}
+
+        //private void button2_Click(object sender, EventArgs e)
+        //{
+        //    Form2 ex = new Form2();
+        //    ex.FormClosed += (s, args) => this.Close();
+        //    ex.Show();
+        //    this.Hide();
+        //}
     }
 }
