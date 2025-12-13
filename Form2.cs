@@ -151,7 +151,10 @@ namespace KeyboardTrainer
             };
             btnStart.Click += (s, e) =>
             {
-                MessageBox.Show($"Запуск упражнения: {ex.Name}");
+                GameField gf = new GameField();
+                gf.FormClosed += (s1, args) => this.Close();
+                gf.Show();
+                this.Hide();
             };
 
             panel.Controls.Add(lblName);

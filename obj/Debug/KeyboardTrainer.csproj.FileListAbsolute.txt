@@ -212,3 +212,5 @@ C:\Users\krend\OneDrive\Документы\Учёба\Лабы\тп\Trenazhor\Tr
 C:\Users\krend\OneDrive\Документы\Учёба\Лабы\тп\Trenazhor\Trenazhor\obj\Debug\KeyboardTrainer.Registration.resources
 C:\Users\julia\Documents\GitHub\Trenaz\Trenazhor\obj\Debug\KeyboardTrainer.ListUsers.resources
 C:\Users\julia\Documents\GitHub\Trenaz\Trenazhor\obj\Debug\KeyboardTrainer.StatisticsAdmin.resources
+C:\Users\julia\Documents\GitHub\Trenaz\Trenazhor\obj\Debug\KeyboardTrainer.GameField.resources
+C:\Users\julia\Documents\GitHub\Trenaz\Trenazhor\obj\Debug\KeyboardTrainer.StatisticsUser.resources
