@@ -214,3 +214,7 @@ C:\Users\julia\Documents\GitHub\Trenaz\Trenazhor\obj\Debug\KeyboardTrainer.ListU
 C:\Users\julia\Documents\GitHub\Trenaz\Trenazhor\obj\Debug\KeyboardTrainer.StatisticsAdmin.resources
 C:\Users\julia\Documents\GitHub\Trenaz\Trenazhor\obj\Debug\KeyboardTrainer.GameField.resources
 C:\Users\julia\Documents\GitHub\Trenaz\Trenazhor\obj\Debug\KeyboardTrainer.StatisticsUser.resources
+C:\Users\krend\OneDrive\Документы\Учёба\Лабы\тп\Trenazhor\Trenazhor\obj\Debug\KeyboardTrainer.GameField.resources
+C:\Users\krend\OneDrive\Документы\Учёба\Лабы\тп\Trenazhor\Trenazhor\obj\Debug\KeyboardTrainer.ListUsers.resources
+C:\Users\krend\OneDrive\Документы\Учёба\Лабы\тп\Trenazhor\Trenazhor\obj\Debug\KeyboardTrainer.StatisticsAdmin.resources
+C:\Users\krend\OneDrive\Документы\Учёба\Лабы\тп\Trenazhor\Trenazhor\obj\Debug\KeyboardTrainer.StatisticsUser.resources
