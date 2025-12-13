@@ -14,11 +14,30 @@ namespace KeyboardTrainer
 {
     public partial class Create : Form
     {
+        private int _editExerciseId = -1; // -1 означает создание нового, > 0 - редактирование существующего
+        private bool _isEditMode = false;
+
         public Create()
         {
             InitializeComponent();
+            InitializeForm();
+        }
+
+        // Конструктор для редактирования существующего упражнения
+        public Create(int exerciseId)
+        {
+            InitializeComponent();
+            _editExerciseId = exerciseId;
+            _isEditMode = true;
+            InitializeForm();
+            LoadExerciseForEditing(exerciseId);
+        }
+
+        private void InitializeForm()
+        {
             SetPlaceholder(textBox1, "Наименование упражнения");
             SetPlaceholder(textBox3, "Длина");
+
             comboBox1.Items.Add("Уровень сложности");
             comboBox1.Items.Add("Новичок");
             comboBox1.Items.Add("Ученик");
@@ -26,7 +45,82 @@ namespace KeyboardTrainer
             comboBox1.Items.Add("Эксперт скорости");
             comboBox1.Items.Add("Ниндзя");
             comboBox1.SelectedIndex = 0;
+
             richTextBox1.Visible = false;
+
+            // Изменяем текст кнопки в зависимости от режима
+            if (_isEditMode)
+            {
+                button2.Text = "Сохранить изменения";
+                this.Text = "Редактирование упражнения";
+            }
+            else
+            {
+                button2.Text = "Добавить упражнение";
+                this.Text = "Создание упражнения";
+            }
+        }
+
+        private void LoadExerciseForEditing(int exerciseId)
+        {
+            try
+            {
+                using (var conn = new NpgsqlConnection(connString))
+                {
+                    conn.Open();
+
+                    string query = @"
+                        SELECT e.name, e.length, e.text, l.level_name
+                        FROM exercise e
+                        LEFT JOIN level l ON e.level_id = l.level_id
+                        WHERE e.exercise_id = @exerciseId";
+
+                    using (var cmd = new NpgsqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@exerciseId", exerciseId);
+
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                // Заполняем поля формы
+                                textBox1.Text = reader["name"].ToString();
+                                textBox3.Text = reader["length"].ToString();
+
+                                // Устанавливаем текст упражнения
+                                string exerciseText = reader["text"].ToString();
+                                if (!string.IsNullOrEmpty(exerciseText))
+                                {
+                                    richTextBox1.Text = exerciseText;
+                                    checkBox1.Checked = true;
+                                    richTextBox1.Visible = true;
+                                }
+
+                                // Устанавливаем уровень сложности
+                                string levelName = reader["level_name"].ToString();
+                                if (!string.IsNullOrEmpty(levelName))
+                                {
+                                    int index = comboBox1.FindString(levelName);
+                                    if (index != -1)
+                                    {
+                                        comboBox1.SelectedIndex = index;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Упражнение не найдено", "Ошибка",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при загрузке упражнения: {ex.Message}", "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         protected override void OnPaintBackground(PaintEventArgs e)
@@ -79,8 +173,8 @@ namespace KeyboardTrainer
                 richTextBox1.Visible = false;
             }
         }
-        private readonly string connString =
-    "Host=localhost;Port=5432;Username=postgres;Password=СВОЙ_ПАРОЛЬ;Database=Trenazhor";
+
+        private readonly string connString = "Host=localhost;Port=5432;Username=postgres;Password=Krendel25;Database=Trenazhor";
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -132,48 +226,113 @@ namespace KeyboardTrainer
                                           "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-
-                        // Добавляем упражнение в базу
-                        AddExercise(ex_name, len, ex_text, level_name);
                     }
                     else
                     {
                         // Генерируем текст из символов зоны клавиатуры
                         ex_text = GenerateTextFromSymbols(symbols, len);
+                    }
 
-                        // Добавляем упражнение в базу
+                    // В зависимости от режима, либо добавляем, либо обновляем упражнение
+                    if (_isEditMode)
+                    {
+                        UpdateExercise(_editExerciseId, ex_name, len, ex_text, level_name);
+                    }
+                    else
+                    {
                         AddExercise(ex_name, len, ex_text, level_name);
                     }
                 }
             }
         }
 
-        // МЕТОД ДЛЯ ПРОВЕРКИ СООТВЕТСТВИЯ СИМВОЛОВ УРОВНЮ
+        // Метод для обновления существующего упражнения
+        private void UpdateExercise(int exerciseId, string name, int length, string text, string levelName)
+        {
+            try
+            {
+                using (var conn = new NpgsqlConnection(connString))
+                {
+                    conn.Open();
+
+                    // Сначала получаем level_id по названию уровня
+                    int levelId = GetLevelIdByName(levelName);
+
+                    // Затем обновляем упражнение
+                    string updateSql = @"
+                        UPDATE exercise 
+                        SET name = @name, 
+                            length = @length, 
+                            text = @text, 
+                            level_id = @levelId
+                        WHERE exercise_id = @exerciseId";
+
+                    using (var cmd = new NpgsqlCommand(updateSql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@exerciseId", exerciseId);
+                        cmd.Parameters.AddWithValue("@name", name);
+                        cmd.Parameters.AddWithValue("@length", length);
+                        cmd.Parameters.AddWithValue("@text", text);
+                        cmd.Parameters.AddWithValue("@levelId", levelId);
+
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Упражнение успешно обновлено!", "Успех",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            // Закрываем форму редактирования
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Не удалось обновить упражнение", "Ошибка",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при обновлении упражнения: {ex.Message}", "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Метод для получения ID уровня по названию (вынесен отдельно для переиспользования)
+        private int GetLevelIdByName(string levelName)
+        {
+            using (var conn = new NpgsqlConnection(connString))
+            {
+                conn.Open();
+                string sql = "SELECT level_id FROM level WHERE level_name = @levelName";
+                using (var cmd = new NpgsqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@levelName", levelName);
+                    return (int)cmd.ExecuteScalar();
+                }
+            }
+        }
+
+        // Остальные методы остаются без изменений...
         private string CheckTextForLevel(string text, string allowedSymbols)
         {
-            // Создаем HashSet для быстрого поиска разрешенных символов
             var allowedSet = new HashSet<char>(allowedSymbols);
-
-            // Добавляем пробел как разрешенный символ (для разделения слов)
             allowedSet.Add(' ');
-            allowedSet.Add('\n'); // если есть переносы строк
-            allowedSet.Add('\r'); // возврат каретки
-            allowedSet.Add('\t'); // табуляция
+            allowedSet.Add('\n');
+            allowedSet.Add('\r');
+            allowedSet.Add('\t');
 
-            // Находим все символы, которых нет в разрешенных
             var invalidChars = text
                 .Where(c => !allowedSet.Contains(c))
                 .Distinct()
                 .ToArray();
 
             if (invalidChars.Length == 0)
-                return null; // Все символы допустимы
+                return null;
 
-            // Формируем сообщение с недопустимыми символами
             return $"Недопустимые символы: {string.Join(", ", invalidChars.Select(c => $"'{c}'"))}";
         }
 
-        // Метод для получения символов по названию уровня
         private string GetSymbolsByLevelName(string levelName)
         {
             try
@@ -183,11 +342,11 @@ namespace KeyboardTrainer
                     conn.Open();
 
                     string sql = @"
-                SELECT kz.symbols
-                FROM keyboard_zone kz
-                INNER JOIN keyboard_zone_level kzl ON kz.zone_id = kzl.zone_id
-                INNER JOIN level l ON kzl.level_id = l.level_id
-                WHERE l.level_name = @levelName";
+                        SELECT kz.symbols
+                        FROM keyboard_zone kz
+                        INNER JOIN keyboard_zone_level kzl ON kz.zone_id = kzl.zone_id
+                        INNER JOIN level l ON kzl.level_id = l.level_id
+                        WHERE l.level_name = @levelName";
 
                     using (var cmd = new NpgsqlCommand(sql, conn))
                     {
@@ -195,14 +354,12 @@ namespace KeyboardTrainer
 
                         using (var reader = cmd.ExecuteReader())
                         {
-                            // Собираем все символы в одну строку
                             var allSymbols = new StringBuilder();
                             while (reader.Read())
                             {
                                 allSymbols.Append(reader.GetString(0));
                             }
 
-                            // Убираем дубликаты символов для удобства
                             var uniqueSymbols = new string(allSymbols.ToString().Distinct().ToArray());
                             return uniqueSymbols;
                         }
@@ -216,7 +373,6 @@ namespace KeyboardTrainer
             }
         }
 
-        // Метод для генерации текста из символов
         private string GenerateTextFromSymbols(string symbols, int length)
         {
             if (string.IsNullOrEmpty(symbols)) return "";
@@ -226,11 +382,9 @@ namespace KeyboardTrainer
 
             for (int i = 0; i < length; i++)
             {
-                // Случайно выбираем символ из доступных
                 int index = random.Next(symbols.Length);
                 result.Append(symbols[index]);
 
-                // Добавляем пробелы для читаемости (каждые 3-7 символов)
                 if ((i + 1) % random.Next(3, 8) == 0 && i < length - 1)
                 {
                     result.Append(' ');
@@ -240,7 +394,6 @@ namespace KeyboardTrainer
             return result.ToString();
         }
 
-        // Метод для добавления упражнения в базу
         private void AddExercise(string name, int length, string text, string levelName)
         {
             try
@@ -250,19 +403,12 @@ namespace KeyboardTrainer
                     conn.Open();
 
                     // Сначала получаем level_id по названию уровня
-                    string getLevelIdSql = "SELECT level_id FROM level WHERE level_name = @levelName";
-                    int levelId;
-
-                    using (var cmd = new NpgsqlCommand(getLevelIdSql, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@levelName", levelName);
-                        levelId = (int)cmd.ExecuteScalar();
-                    }
+                    int levelId = GetLevelIdByName(levelName);
 
                     // Затем добавляем упражнение
                     string insertSql = @"
-                INSERT INTO exercise (name, length, text, level_id) 
-                VALUES (@name, @length, @text, @levelId)";
+                        INSERT INTO exercise (name, length, text, level_id) 
+                        VALUES (@name, @length, @text, @levelId)";
 
                     using (var cmd = new NpgsqlCommand(insertSql, conn))
                     {
@@ -274,7 +420,8 @@ namespace KeyboardTrainer
                         int rowsAffected = cmd.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
-                            MessageBox.Show("Упражнение успешно добавлено!");
+                            MessageBox.Show("Упражнение успешно добавлено!", "Успех",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
                             // Очищаем поля после успешного добавления
                             textBox1.Text = "";
                             textBox3.Text = "";
@@ -287,8 +434,17 @@ namespace KeyboardTrainer
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка при добавлении упражнения: {ex.Message}");
+                MessageBox.Show($"Ошибка при добавлении упражнения: {ex.Message}", "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ExercisesAdmin ea = new ExercisesAdmin();
+            ea.FormClosed += (s, args) => this.Close();
+            ea.Show();
+            this.Hide();
         }
     }
 }
