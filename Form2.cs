@@ -31,6 +31,7 @@ namespace KeyboardTrainer
             exercisesPanel.SizeChanged += ExercisesPanel_SizeChanged;
 
             exercisesPanel.Visible = false;
+            label2.Visible = false;
         }
 
         private readonly string connString = "Host=localhost;Port=5432;Username=postgres;Password=utochkazrazra;Database=Trenazhor";
@@ -40,15 +41,20 @@ namespace KeyboardTrainer
         {
             contentPanel.Visible = false;
         }
-
+        private int maxErrors;
+        private int timeText;
         private void LevelButton_Click(object sender, EventArgs e)
         {
             if (sender is Button btn && btn.Tag is string levelName)
             {
                 exercisesPanel.Visible = true;
                 exercisesPanel.Controls.Clear();
-
                 LoadExercisesForLevel(levelName);
+
+                label2.Text =
+                $"Максимум ошибок: {maxErrors}\n" +
+                $"Время нажатия: {timeText}";
+                label2.Visible = true;
             }
         }
         private void LoadExercisesForLevel(string levelName)
@@ -110,18 +116,7 @@ namespace KeyboardTrainer
             }
             AdjustCardWidths();
         }
-        private Label CreateInfoLabel(string text)
-        {
-            return new Label
-            {
-                Text = text,
-                AutoSize = true,
-                ForeColor = Color.Gray,
-                Margin = new Padding(0, 0, 12, 0)
-            };
-        }
-        private int MaxErrors;//ЭТИ ДВЕ СТРОКИ НАДО ЗАМЕНИТЬ НА ИНФУ ИЗ БД. СО СТРОЧКИ 64 ШАМАНИТЬ НАВЕРНОЕ ИЛИ ПОСЛЕ
-        private int MaxPressTime;
+        
         private Control CreateExerciseCard(ExerciseModel ex)
         {
             var panel = new Panel
@@ -145,18 +140,12 @@ namespace KeyboardTrainer
                 Tag = ex
             };
 
+            var lblInfo = new Label { 
+                Text = $"Длительность: {ex.Length} символов", 
+                Location = new Point(8, 36), 
+                AutoSize = true, 
+                ForeColor = Color.Gray };
 
-            var infoPanel = new FlowLayoutPanel
-            {
-                Location = new Point(8, 36),
-                AutoSize = true,
-                FlowDirection = FlowDirection.LeftToRight,
-                WrapContents = false
-            };
-
-            infoPanel.Controls.Add(CreateInfoLabel($"{ex.Length} символов"));
-            infoPanel.Controls.Add(CreateInfoLabel($"Максимальное количество ошибок: {MaxErrors}"));
-            infoPanel.Controls.Add(CreateInfoLabel($"Время нажатия: {MaxPressTime}"));
             var btnStart = new Button
             {
                 Text = "Начать",
@@ -172,7 +161,7 @@ namespace KeyboardTrainer
                 this.Hide();
             };
 
-            panel.Controls.Add(infoPanel);
+            panel.Controls.Add(lblInfo);
             panel.Controls.Add(lblName);
             panel.Controls.Add(btnStart);
 
@@ -209,17 +198,19 @@ namespace KeyboardTrainer
                 if (btn != null) btn.Location = new Point(c.Width - 100, btn.Location.Y);
             }
         }
+
     }
 
 }
 
-    
-    class ExerciseModel
-    {
-        public int ExerciseId { get; set; }
-        public string Name { get; set; }
-        public int Length { get; set; }
-        public string Text { get; set; }
-    }
+class ExerciseModel
+{
+    public int ExerciseId { get; set; }
+    public string Name { get; set; }
+    public int Length { get; set; }
+    public string Text { get; set; }
+    public int MaxErrors { get; set; }
+    public int TimeLimitSeconds { get; set; }
+}
 
     

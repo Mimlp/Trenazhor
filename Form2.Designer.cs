@@ -36,6 +36,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.contentPanel = new System.Windows.Forms.Panel();
             this.exercisesPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.label2 = new System.Windows.Forms.Label();
             this.contentPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -131,12 +132,23 @@
             this.exercisesPanel.Size = new System.Drawing.Size(1139, 406);
             this.exercisesPanel.TabIndex = 0;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(907, 494);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(31, 22);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "<3";
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Lavender;
             this.ClientSize = new System.Drawing.Size(1192, 607);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.contentPanel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button5);
@@ -162,5 +174,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel contentPanel;
         private System.Windows.Forms.FlowLayoutPanel exercisesPanel;
+        private System.Windows.Forms.Label label2;
     }
 }
