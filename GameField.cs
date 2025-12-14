@@ -18,27 +18,23 @@ namespace KeyboardTrainer
         private int currentPosition;
         private bool err = false;
         private bool cursorVisible = true;
-        private int done;
-        private int allExLength;
         public GameField()
         {
             InitializeComponent();
             InitializeGame();
 
             pnlTextContainer.Paint += Panel_Paint;
-
+            this.KeyPreview = true;
             this.Controls.Add(pnlTextContainer);
-
             this.KeyPress += GameField_KeyPress;
-
             cursorTimer = new Timer();
             cursorTimer.Interval = SystemInformation.CaretBlinkTime;
             cursorTimer.Tick += CursorTimer_Tick;
             cursorTimer.Start();
-
             this.Shown += (s, e) => this.Focus();
+            pnlTextContainer.Font = new Font("Segoe UI", 22f, FontStyle.Regular);
         }
-        
+
         private void InitializeGame()
         {
             sourceText = "Привет, это тренировочный текст!";
@@ -92,7 +88,7 @@ namespace KeyboardTrainer
 
             if (currentPosition >= sourceText.Length)
             {
-                string done = "Текст завершён!";
+                string done = "Упражнение завершено!";
                 SizeF size = g.MeasureString(done, font);
                 g.DrawString(done, font, Brushes.Green,
                     (pnlTextContainer.Width - size.Width) / 2,
@@ -136,7 +132,7 @@ namespace KeyboardTrainer
         //        return base.ProcessCmdKey(ref msg, keyData);
 
         //    HandleInput(c);
-        //    return true; 
+        //    return true;
         //}
         //private void HandleInput(char input)
         //{
@@ -172,12 +168,12 @@ namespace KeyboardTrainer
         //    return '\0';
         //}
 
-        //private void button2_Click(object sender, EventArgs e)
-        //{
-        //    Form2 ex = new Form2();
-        //    ex.FormClosed += (s, args) => this.Close();
-        //    ex.Show();
-        //    this.Hide();
-        //}
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form2 ex = new Form2();
+            ex.FormClosed += (s, args) => this.Close();
+            ex.Show();
+            this.Hide();
+        }
     }
 }

@@ -33,7 +33,7 @@ namespace KeyboardTrainer
             exercisesPanel.Visible = false;
         }
 
-        private readonly string connString = "Host=localhost;Port=5432;Username=postgres;Password=Krendel25;Database=Trenazhor";
+        private readonly string connString = "Host=localhost;Port=5432;Username=postgres;Password=utochkazrazra;Database=Trenazhor";
         private readonly string[] levelButtons = new[] { "Новичок", "Ученик", "Мастер клавиш", "Эксперт скорости", "Ниндзя" };
 
         private void InitializeForm()
@@ -110,6 +110,18 @@ namespace KeyboardTrainer
             }
             AdjustCardWidths();
         }
+        private Label CreateInfoLabel(string text)
+        {
+            return new Label
+            {
+                Text = text,
+                AutoSize = true,
+                ForeColor = Color.Gray,
+                Margin = new Padding(0, 0, 12, 0)
+            };
+        }
+        private int MaxErrors;//ЭТИ ДВЕ СТРОКИ НАДО ЗАМЕНИТЬ НА ИНФУ ИЗ БД. СО СТРОЧКИ 64 ШАМАНИТЬ НАВЕРНОЕ ИЛИ ПОСЛЕ
+        private int MaxPressTime;
         private Control CreateExerciseCard(ExerciseModel ex)
         {
             var panel = new Panel
@@ -132,16 +144,19 @@ namespace KeyboardTrainer
                 Cursor = Cursors.Hand,
                 Tag = ex
             };
-            
 
-            var lblInfo = new Label
+
+            var infoPanel = new FlowLayoutPanel
             {
-                Text = $"Длительность: {ex.Length} символов",
                 Location = new Point(8, 36),
                 AutoSize = true,
-                ForeColor = Color.Gray
+                FlowDirection = FlowDirection.LeftToRight,
+                WrapContents = false
             };
 
+            infoPanel.Controls.Add(CreateInfoLabel($"{ex.Length} символов"));
+            infoPanel.Controls.Add(CreateInfoLabel($"Максимальное количество ошибок: {MaxErrors}"));
+            infoPanel.Controls.Add(CreateInfoLabel($"Время нажатия: {MaxPressTime}"));
             var btnStart = new Button
             {
                 Text = "Начать",
@@ -157,8 +172,8 @@ namespace KeyboardTrainer
                 this.Hide();
             };
 
+            panel.Controls.Add(infoPanel);
             panel.Controls.Add(lblName);
-            panel.Controls.Add(lblInfo);
             panel.Controls.Add(btnStart);
 
             exercisesPanel.SizeChanged += (s, e) =>
