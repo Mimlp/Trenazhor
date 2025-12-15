@@ -218,3 +218,11 @@ C:\Users\krend\OneDrive\Документы\Учёба\Лабы\тп\Trenazhor\Tr
 C:\Users\krend\OneDrive\Документы\Учёба\Лабы\тп\Trenazhor\Trenazhor\obj\Debug\KeyboardTrainer.ListUsers.resources
 C:\Users\krend\OneDrive\Документы\Учёба\Лабы\тп\Trenazhor\Trenazhor\obj\Debug\KeyboardTrainer.StatisticsAdmin.resources
 C:\Users\krend\OneDrive\Документы\Учёба\Лабы\тп\Trenazhor\Trenazhor\obj\Debug\KeyboardTrainer.StatisticsUser.resources
+C:\Users\Анастасия\Desktop\ТП\Новая папка\Trenazhor\obj\Debug\KeyboardTrainer.Create.resources
+C:\Users\Анастасия\Desktop\ТП\Новая папка\Trenazhor\obj\Debug\KeyboardTrainer.ExercisesAdmin.resources
+C:\Users\Анастасия\Desktop\ТП\Новая папка\Trenazhor\obj\Debug\KeyboardTrainer.GameField.resources
+C:\Users\Анастасия\Desktop\ТП\Новая папка\Trenazhor\obj\Debug\KeyboardTrainer.ListUsers.resources
+C:\Users\Анастасия\Desktop\ТП\Новая папка\Trenazhor\obj\Debug\KeyboardTrainer.Open.resources
+C:\Users\Анастасия\Desktop\ТП\Новая папка\Trenazhor\obj\Debug\KeyboardTrainer.Registration.resources
+C:\Users\Анастасия\Desktop\ТП\Новая папка\Trenazhor\obj\Debug\KeyboardTrainer.StatisticsAdmin.resources
+C:\Users\Анастасия\Desktop\ТП\Новая папка\Trenazhor\obj\Debug\KeyboardTrainer.StatisticsUser.resources

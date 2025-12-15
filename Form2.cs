@@ -34,15 +34,18 @@ namespace KeyboardTrainer
             label2.Visible = false;
         }
 
-        private readonly string connString = "Host=localhost;Port=5432;Username=postgres;Password=utochkazrazra;Database=Trenazhor";
+        private readonly string connString = "Host=localhost;Port=5432;Username=postgres;Password=root;Database=Trenazhor";
         private readonly string[] levelButtons = new[] { "Новичок", "Ученик", "Мастер клавиш", "Эксперт скорости", "Ниндзя" };
+        private string currentSelectedLevel;
+        private int currentLevelMaxErrors = 10;
+        private int currentLevelMinTime = 10;
+        private int currentLevelMaxTime = 1000;
 
         private void InitializeForm()
         {
             contentPanel.Visible = false;
         }
-        private int maxErrors;
-        private int timeText;
+
         private void LevelButton_Click(object sender, EventArgs e)
         {
             if (sender is Button btn && btn.Tag is string levelName)
@@ -52,8 +55,8 @@ namespace KeyboardTrainer
                 LoadExercisesForLevel(levelName);
 
                 label2.Text =
-                $"Максимум ошибок: {maxErrors}\n" +
-                $"Время нажатия: {timeText}";
+                $"Максимум ошибок: {currentLevelMaxErrors}\n" +
+                $"Максимальное время нажатия: {currentLevelMaxTime} мс";
                 label2.Visible = true;
             }
         }
@@ -66,6 +69,34 @@ namespace KeyboardTrainer
                 using (var conn = new NpgsqlConnection(connString))
                 {
                     conn.Open();
+
+                    // Получаем max_error_allowed для уровня
+                    string levelSql = @"
+                        SELECT max_error_allowed, min_press_time, max_press_time 
+                        FROM level 
+                        WHERE LOWER(level_name) = LOWER(@levelName)";
+
+                    using (var levelCmd = new NpgsqlCommand(levelSql, conn))
+                    {
+                        levelCmd.Parameters.AddWithValue("levelName", levelName);
+                        using (var reader = levelCmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                currentLevelMaxErrors = reader.GetInt32(reader.GetOrdinal("max_error_allowed"));
+
+                                // Получаем значения как double (real в БД)
+                                double minPressTimeSeconds = reader.IsDBNull(reader.GetOrdinal("min_press_time"))
+                                    ? 0
+                                    : reader.GetDouble(reader.GetOrdinal("min_press_time"));
+                                currentLevelMinTime = (int)(minPressTimeSeconds * 1000);
+                                double maxPressTimeSeconds = reader.IsDBNull(reader.GetOrdinal("max_press_time"))
+                                    ? 0
+                                    : reader.GetDouble(reader.GetOrdinal("max_press_time"));
+                                currentLevelMaxTime = (int)(maxPressTimeSeconds * 1000);
+                            }
+                        }
+                    }
 
                     string sql = @"
                         SELECT e.exercise_id, e.name, e.length, e.text
@@ -155,7 +186,7 @@ namespace KeyboardTrainer
             };
             btnStart.Click += (s, e) =>
             {
-                GameField gf = new GameField();
+                GameField gf = new GameField(ex.Text, currentLevelMaxErrors, currentLevelMinTime, currentLevelMaxTime);
                 gf.FormClosed += (s1, args) => this.Close();
                 gf.Show();
                 this.Hide();

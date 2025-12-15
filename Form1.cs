@@ -75,7 +75,7 @@ namespace KeyboardTrainer
         //=== АВТОРИЗАЦИЯ ===
         
         private readonly string connString =
-            "Host=localhost;Port=5432;Username=postgres;Password=utochkazrazra;Database=Trenazhor";
+            "Host=localhost;Port=5432;Username=postgres;Password=root;Database=Trenazhor";
         private void button1_Click(object sender, EventArgs e)
         {
             string login = textBox1.Text.Trim();

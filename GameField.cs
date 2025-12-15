@@ -21,10 +21,32 @@ namespace KeyboardTrainer
         private bool cursorVisible = true;
         private Dictionary<Keys, Button> keyButtons = new Dictionary<Keys, Button>();
 
-        public GameField()
+        private int errorCount = 0;
+        private int maxErrorsAllowed = 10;
+        private int minPressTime = 10;
+        private int maxPressTime = 1000;
+
+        private double averageSpeed = 0;
+        private double averageTime = 0;
+
+        private Timer exerciseTimer;
+        private DateTime startTime;
+        private TimeSpan elapsedTime;
+        private bool timerStarted = false;
+        private DateTime lastKeyPressTime;
+
+
+        public GameField(string text, int maxErrors, int minPressTime, int maxPressTime)
         {
             InitializeComponent();
             InitializeGame();
+
+            this.sourceText = text;
+            this.maxErrorsAllowed = maxErrors;
+            this.minPressTime = minPressTime;
+            this.maxPressTime = maxPressTime;
+
+            UpdateLabels();
 
             pnlTextContainer.Paint += Panel_Paint;
             this.KeyPreview = true;
@@ -34,6 +56,11 @@ namespace KeyboardTrainer
             cursorTimer.Interval = SystemInformation.CaretBlinkTime;
             cursorTimer.Tick += CursorTimer_Tick;
             cursorTimer.Start();
+
+            exerciseTimer = new Timer();
+            exerciseTimer.Interval = 100;
+            exerciseTimer.Tick += ExerciseTimer_Tick;
+
             this.Shown += (s, e) => this.Focus();
             pnlTextContainer.Font = new Font("Segoe UI", 22f, FontStyle.Regular);
 
@@ -59,6 +86,15 @@ namespace KeyboardTrainer
             pnlTextContainer.Invalidate();
         }
 
+        private void ExerciseTimer_Tick(object sender, EventArgs e)
+        {
+            if (timerStarted)
+            {
+                elapsedTime = DateTime.Now - startTime;
+                UpdateTimeLabel();
+            }
+        }
+
         private void GameField_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (currentPosition >= sourceText.Length)
@@ -67,19 +103,145 @@ namespace KeyboardTrainer
             if (char.IsControl(e.KeyChar))
                 return;
 
+            if (!timerStarted && currentPosition == 0)
+            {
+                timerStarted = true;
+                startTime = DateTime.Now;
+                exerciseTimer.Start();
+                lastKeyPressTime = DateTime.Now; // Запоминаем время первого нажатия
+            }
+
+            DateTime currentPressTime = DateTime.Now;
             char expected = sourceText[currentPosition];
+
+            TimeSpan timeSinceLastPress = currentPressTime - lastKeyPressTime;
+            double pressTimeMs = (double)timeSinceLastPress.TotalMilliseconds;
+
+
+            if (currentPosition > 0)
+            {
+                if (minPressTime > 0 && pressTimeMs < minPressTime)
+                {
+                    cursorTimer.Stop();
+                    exerciseTimer.Stop();
+                    MessageBox.Show($"Слишком быстрое нажатие ({pressTimeMs})!\n" +
+                                   "Упражнение завершено.", "Внимание",
+                                   MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    //Добавить выход из упражнения и кнопку заново
+                }
+                else if (maxPressTime > 0 && pressTimeMs > maxPressTime)
+                {
+                    cursorTimer.Stop();
+                    exerciseTimer.Stop();
+                    MessageBox.Show($"Слишком медленное нажатие ({pressTimeMs})!\n" +
+                                   "Упражнение завершено.", "Внимание",
+                                   MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    //Добавить выход из упражнения и кнопку заново
+                }
+            }
 
             if (char.ToLower(e.KeyChar) == char.ToLower(expected))
             {
                 currentPosition++;
+                averageTime += (pressTimeMs / 1000);
+
+                // Пересчитываем среднюю скорость
+                averageSpeed = (currentPosition + 1) / averageTime;
                 err = false;
+                lastKeyPressTime = currentPressTime;
             }
             else
             {
+                errorCount++;
                 err = true;
             }
+            UpdateLabels();
+
+            if (errorCount > maxErrorsAllowed)
+            {
+                cursorTimer.Stop();
+                exerciseTimer.Stop();
+                MessageBox.Show($"Превышено максимальное количество ошибок ({maxErrorsAllowed})!\n" +
+                               "Упражнение завершено.", "Внимание",
+                               MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //Добавить выход из упражнения и кнопку заново
+                return;
+            }
+
 
             pnlTextContainer.Invalidate();
+
+            if (currentPosition >= sourceText.Length)
+            {
+                cursorTimer.Stop();
+
+                if (timerStarted)
+                {
+                    exerciseTimer.Stop();
+                    elapsedTime = DateTime.Now - startTime;
+                }
+
+                double accuracy = 100.0 * (sourceText.Length - errorCount) / sourceText.Length;
+
+                string timeFormatted = $"{(int)elapsedTime.TotalMinutes:00}:{(int)elapsedTime.TotalSeconds % 60:00}.{elapsedTime.Milliseconds / 100}";
+
+                MessageBox.Show($"Упражнение завершено!\n\n" +
+                               $"Время: {timeFormatted}\n" +
+                               $"Ошибок: {errorCount}/{maxErrorsAllowed}\n" +
+                               $"Точность: {accuracy:F1}%\n" +
+                               $"Статус: {(errorCount <= maxErrorsAllowed ? "УСПЕХ" : "НЕУДАЧА")}",
+                               "Результат",
+                               MessageBoxButtons.OK,
+                               errorCount <= maxErrorsAllowed ? MessageBoxIcon.Information : MessageBoxIcon.Warning);
+
+            }
+        }
+
+        private bool CheckPressTime(DateTime pressTime)
+        {
+            if (currentPosition == 0) return true; // Первая буква - нет предыдущей для сравнения
+
+            TimeSpan timeSinceLastPress = pressTime - lastKeyPressTime;
+            int pressTimeMs = (int)timeSinceLastPress.TotalMilliseconds;
+
+            // Проверяем ограничения
+            if (minPressTime > 0 && pressTimeMs < minPressTime)
+            {
+                return false; // Слишком быстро
+            }
+
+            if (maxPressTime > 0 && pressTimeMs > maxPressTime)
+            {
+                return false; // Слишком медленно
+            }
+
+            return true;
+        }
+
+        private void UpdateLabels()
+        {
+            label2.Text = $"Ошибок: {errorCount}/{maxErrorsAllowed}";
+            label1.Text = $"Прогресс: {currentPosition}/{sourceText.Length}";
+            label4.Text = $"Скорость: {averageSpeed:F1} символ/мс";
+
+            // Меняем цвет в зависимости от количества ошибок
+            if (errorCount > maxErrorsAllowed)
+                label2.ForeColor = Color.Red;
+            else if (errorCount > maxErrorsAllowed * 0.7)
+                label2.ForeColor = Color.Orange;
+            else
+                label2.ForeColor = Color.DarkGreen;
+        }
+
+        private void UpdateTimeLabel()
+        {
+            // Форматируем время: минуты:секунды.десятые
+            int totalSeconds = (int)elapsedTime.TotalSeconds;
+            int minutes = totalSeconds / 60;
+            int seconds = totalSeconds % 60;
+            int tenths = (int)(elapsedTime.Milliseconds / 100);
+
+            label3.Text = $"Время: {minutes:00}:{seconds:00}.{tenths}";
         }
 
         private void Panel_Paint(object sender, PaintEventArgs e)
