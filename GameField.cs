@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace KeyboardTrainer
 {
@@ -19,7 +20,7 @@ namespace KeyboardTrainer
         private int currentPosition;
         private bool err = false;
         private bool cursorVisible = true;
-        private Dictionary<Keys, Button> keyButtons = new Dictionary<Keys, Button>();
+        private Dictionary<Keys, System.Windows.Forms.Button> keyButtons = new Dictionary<Keys, System.Windows.Forms.Button>();
 
         private int errorCount = 0;
         private int maxErrorsAllowed = 10;
@@ -70,6 +71,11 @@ namespace KeyboardTrainer
             keyboardPanel.Visible = checkBox1.Checked;
             checkBox1.CheckedChanged += (s, e) =>  legendPanel.Visible = checkBox1.Checked; 
             checkBox1.CheckedChanged += (s, e) => keyboardPanel.Visible = checkBox1.Checked;
+            CenterKeyboard();
+            this.KeyDown += Form_KeyDown;
+            this.KeyUp += Form_KeyUp;
+            this.KeyPreview = true;
+            this.SetStyle(ControlStyles.Selectable, true);
         }
 
         private void InitializeGame()
@@ -222,7 +228,7 @@ namespace KeyboardTrainer
         {
             label2.Text = $"Ошибок: {errorCount}/{maxErrorsAllowed}";
             label1.Text = $"Прогресс: {currentPosition}/{sourceText.Length}";
-            label4.Text = $"Скорость: {averageSpeed:F1} символ/мс";
+            label4.Text = $"Скорость: {averageSpeed:F1} сим/мс";
 
             // Меняем цвет в зависимости от количества ошибок
             if (errorCount > maxErrorsAllowed)
@@ -349,147 +355,190 @@ namespace KeyboardTrainer
 
         enum Finger
         {
-            LeftPinky,
-            LeftRing,
-            LeftMiddle,
-            LeftIndex,
-            RightIndex, 
-            RightMiddle,
-            RightRing,
-            RightPinky
+            Pinky,
+            Ring,
+            Middle,
+            IndexLeft,
+            IndexRight,
+            Thumb
         }
 
         private Color FingerColor(Finger finger)
         {
             switch (finger)
             {
-                case Finger.LeftPinky: return Color.LightPink;
-                case Finger.LeftRing: return Color.LightSalmon;
-                case Finger.LeftMiddle: return Color.LightGreen;
-                case Finger.LeftIndex: return Color.LightCyan;
-                case Finger.RightIndex: return Color.LightBlue;
-                case Finger.RightMiddle: return Color.LightGoldenrodYellow;
-                case Finger.RightRing: return Color.Plum;
-                case Finger.RightPinky: return Color.Thistle;
-                default: return Color.LightGray;
+                case Finger.Pinky:
+                    return Color.LightPink;
+                case Finger.Ring:
+                    return Color.PeachPuff;
+                case Finger.Middle:
+                    return Color.LightGreen;
+                case Finger.IndexLeft:
+                    return Color.LightCyan;
+                case Finger.IndexRight:
+                    return Color.LightBlue;
+                case Finger.Thumb:
+                    return Color.Plum;
+                default: return Color.White;
             }
         }
+        private Color Darken(Color c, int amount = 35)
+        {
+            return Color.FromArgb(
+                c.A,
+                Math.Max(0, c.R - amount),
+                Math.Max(0, c.G - amount),
+                Math.Max(0, c.B - amount)
+            );
+        }
+
+        private void AddKey(
+            string text,
+            Keys key,
+            int x,
+            int y,
+            int width,
+            int height,
+            Finger? finger = null)
+        {
+            Color baseColor = finger.HasValue
+                ? FingerColor(finger.Value)
+                : Color.White;
+
+            System.Windows.Forms.Button btn = new System.Windows.Forms.Button
+            {
+                Text = text,
+                Left = x,
+                Top = y,
+                Width = width,
+                Height = height,
+                FlatStyle = FlatStyle.Flat,
+                BackColor = baseColor,
+
+                Tag = baseColor 
+            };
+
+            keyboardPanel.Controls.Add(btn);
+            keyButtons[key] = btn;
+        }
+
 
         private void CreateKeyboard()
         {
             keyboardPanel.Controls.Clear();
             keyButtons.Clear();
 
-            int keyWidth = 43;
-            int keyHeight = 43;
-            int margin = 5;
+            int k = 42;
+            int h = 42;
+            int m = 4;
 
-            void AddKey(string text, Keys key, int col, int row, Finger finger, bool isSpecial = false)
-            {
-                Button btn = new Button
-                {
-                    Text = text,
-                    Width = keyWidth,
-                    Height = keyHeight,
-                    Left = col * (keyWidth + margin),
-                    Top = row * (keyHeight + margin),
-                    FlatStyle = FlatStyle.Flat,
-                    BackColor = isSpecial ? Color.White : FingerColor(finger),
-                    ForeColor = Color.Black
-                };
-                keyboardPanel.Controls.Add(btn);
-                keyButtons[key] = btn;
-            }
+            int y = 0;
 
-            AddKey("1", Keys.D1, 0, 0, Finger.LeftPinky, true);
-            AddKey("2", Keys.D2, 1, 0, Finger.LeftRing, true);
-            AddKey("3", Keys.D3, 2, 0, Finger.LeftMiddle, true);
-            AddKey("4", Keys.D4, 3, 0, Finger.LeftIndex, true);
-            AddKey("5", Keys.D5, 4, 0, Finger.LeftIndex, true);
-            AddKey("6", Keys.D6, 5, 0, Finger.RightIndex, true);
-            AddKey("7", Keys.D7, 6, 0, Finger.RightIndex, true);
-            AddKey("8", Keys.D8, 7, 0, Finger.RightMiddle, true);
-            AddKey("9", Keys.D9, 8, 0, Finger.RightRing, true);
-            AddKey("0", Keys.D0, 9, 0, Finger.RightPinky, true);
-            AddKey("-", Keys.OemMinus, 10, 0, Finger.RightPinky, true);
-            AddKey("=", Keys.Oemplus, 11, 0, Finger.RightPinky, true);
+            AddKey("~    Ё", Keys.Oemtilde, 0, y, k, h, Finger.Pinky);
+            AddKey("!      1", Keys.D1, 1 * (k + m), y, k, h, Finger.Pinky);
+            AddKey("\"     2", Keys.D2, 2 * (k + m), y, k, h, Finger.Ring);
+            AddKey("№    3", Keys.D3, 3 * (k + m), y, k, h, Finger.Middle);
+            AddKey(";      4", Keys.D4, 4 * (k + m), y, k, h, Finger.IndexLeft);
+            AddKey("%    5", Keys.D5, 5 * (k + m), y, k, h, Finger.IndexLeft);
+            AddKey(":      6", Keys.D6, 6 * (k + m), y, k, h, Finger.IndexRight);
+            AddKey("?     7", Keys.D7, 7 * (k + m), y, k, h, Finger.IndexRight);
+            AddKey("*      8", Keys.D8, 8 * (k + m), y, k, h, Finger.Middle);
+            AddKey("(      9", Keys.D9, 9 * (k + m), y, k, h, Finger.Ring);
+            AddKey(")      0", Keys.D0, 10 * (k + m), y, k, h, Finger.Pinky);
+            AddKey("_      -", Keys.OemMinus, 11 * (k + m), y, k, h, Finger.Pinky);
+            AddKey("+     =", Keys.Add, 12 * (k + m), y, k, h, Finger.Pinky);
+            AddKey("Backspace", Keys.Back, 13 * (k + m), y, k * 2, h);
 
-            AddKey("Й", Keys.Q, 0, 1, Finger.LeftPinky);
-            AddKey("Ц", Keys.W, 1, 1, Finger.LeftRing);
-            AddKey("У", Keys.E, 2, 1, Finger.LeftMiddle);
-            AddKey("К", Keys.R, 3, 1, Finger.LeftIndex);
-            AddKey("Е", Keys.T, 4, 1, Finger.LeftIndex);
-            AddKey("Н", Keys.Y, 5, 1, Finger.RightIndex);
-            AddKey("Г", Keys.U, 6, 1, Finger.RightIndex);
-            AddKey("Ш", Keys.I, 7, 1, Finger.RightMiddle);
-            AddKey("Щ", Keys.O, 8, 1, Finger.RightRing);
-            AddKey("З", Keys.P, 9, 1, Finger.RightPinky);
-            AddKey("Х", Keys.OemOpenBrackets, 10, 1, Finger.RightPinky);
-            AddKey("Ъ", Keys.OemCloseBrackets, 11, 1, Finger.RightPinky);
+            y += h + m;
+            AddKey("Tab", Keys.Tab, 0, y, k, h, Finger.Pinky);
+            AddKey("Й", Keys.Q, 1 * (k + m), y, k, h, Finger.Pinky);
+            AddKey("Ц", Keys.W, 2 * (k + m), y, k, h, Finger.Ring);
+            AddKey("У", Keys.E, 3 * (k + m), y, k, h, Finger.Middle);
+            AddKey("К", Keys.R, 4 * (k + m), y, k, h, Finger.IndexLeft);
+            AddKey("Е", Keys.T, 5 * (k + m), y, k, h, Finger.IndexLeft);
+            AddKey("Н", Keys.Y, 6 * (k + m), y, k, h, Finger.IndexRight);
+            AddKey("Г", Keys.U, 7 * (k + m), y, k, h, Finger.IndexRight);
+            AddKey("Ш", Keys.I, 8 * (k + m), y, k, h, Finger.Middle);
+            AddKey("Щ", Keys.O, 9 * (k + m), y, k, h, Finger.Ring);
+            AddKey("З", Keys.P, 10 * (k + m), y, k, h, Finger.Pinky);
+            AddKey("Х", Keys.OemOpenBrackets, 11 * (k + m), y, k, h, Finger.Pinky);
+            AddKey("Ъ", Keys.OemCloseBrackets, 12 * (k + m), y, k, h, Finger.Pinky);
+            AddKey("Enter", Keys.Enter, 13 * (k + m), y, k * 2, h);
 
-            AddKey("Ф", Keys.A, 0, 2, Finger.LeftPinky);
-            AddKey("Ы", Keys.S, 1, 2, Finger.LeftRing);
-            AddKey("В", Keys.D, 2, 2, Finger.LeftMiddle);
-            AddKey("А", Keys.F, 3, 2, Finger.LeftIndex);
-            AddKey("П", Keys.G, 4, 2, Finger.LeftIndex);
-            AddKey("Р", Keys.H, 5, 2, Finger.RightIndex);
-            AddKey("О", Keys.J, 6, 2, Finger.RightIndex);
-            AddKey("Л", Keys.K, 7, 2, Finger.RightMiddle);
-            AddKey("Д", Keys.L, 8, 2, Finger.RightRing);
-            AddKey("Ж", Keys.OemSemicolon, 9, 2, Finger.RightPinky);
-            AddKey("Э", Keys.OemQuotes, 10, 2, Finger.RightPinky);
+            y += h + m;
+            AddKey("CapsLock", Keys.CapsLock, 0, y, k, h, Finger.Pinky);
+            AddKey("Ф", Keys.A, 1 * (k + m), y, k, h, Finger.Pinky);
+            AddKey("Ы", Keys.S, 2 * (k + m), y, k, h, Finger.Ring);
+            AddKey("В", Keys.D, 3 * (k + m), y, k, h, Finger.Middle);
+            AddKey("А", Keys.F, 4 * (k + m), y, k, h, Finger.IndexLeft);
+            AddKey("П", Keys.G, 5 * (k + m), y, k, h, Finger.IndexLeft);
+            AddKey("Р", Keys.H, 6 * (k + m), y, k, h, Finger.IndexRight);
+            AddKey("О", Keys.J, 7 * (k + m), y, k, h, Finger.IndexRight);
+            AddKey("Л", Keys.K, 8 * (k + m), y, k, h, Finger.Middle);
+            AddKey("Д", Keys.L, 9 * (k + m), y, k, h, Finger.Ring);
+            AddKey("Ж", Keys.OemSemicolon, 10 * (k + m), y, k, h, Finger.Pinky);
+            AddKey("Э", Keys.OemQuotes, 11 * (k + m), y, k, h, Finger.Pinky);
 
-            AddKey("Я", Keys.Z, 0, 3, Finger.LeftPinky);
-            AddKey("Ч", Keys.X, 1, 3, Finger.LeftRing);
-            AddKey("С", Keys.C, 2, 3, Finger.LeftMiddle);
-            AddKey("М", Keys.V, 3, 3, Finger.LeftIndex);
-            AddKey("И", Keys.B, 4, 3, Finger.LeftIndex);
-            AddKey("Т", Keys.N, 5, 3, Finger.RightIndex);
-            AddKey("Ь", Keys.M, 6, 3, Finger.RightIndex);
-            AddKey("Б", Keys.OemOpenBrackets, 7, 3, Finger.RightMiddle);
-            AddKey("Ю", Keys.OemPeriod, 8, 3, Finger.RightRing);
-            AddKey(".", Keys.OemQuestion, 9, 3, Finger.RightPinky);
 
-            Button space = new Button
-            {
-                Text = "Пробел",
-                Width = keyWidth * 6 + margin * 5,
-                Height = keyHeight,
-                Left = 3 * (keyWidth + margin),
-                Top = 4 * (keyHeight + margin),
-                BackColor = Color.White,
-                FlatStyle = FlatStyle.Flat
-            };
-            keyboardPanel.Controls.Add(space);
-            keyButtons[Keys.Space] = space;
+            y += h + m;
+            AddKey("Shift", Keys.LShiftKey, 0, y, k * 2, h);
+            AddKey("Я", Keys.Z, 2 * (k + m), y, k, h, Finger.Pinky);
+            AddKey("Ч", Keys.X, 3 * (k + m), y, k, h, Finger.Ring);
+            AddKey("С", Keys.C, 4 * (k + m), y, k, h, Finger.Middle);
+            AddKey("М", Keys.V, 5 * (k + m), y, k, h, Finger.IndexLeft);
+            AddKey("И", Keys.B, 6 * (k + m), y, k, h, Finger.IndexLeft);
+            AddKey("Т", Keys.N, 7 * (k + m), y, k, h, Finger.IndexRight);
+            AddKey("Ь", Keys.M, 8 * (k + m), y, k, h, Finger.IndexRight);
+            AddKey("Б", Keys.Oem102, 9 * (k + m), y, k, h, Finger.Middle);
+            AddKey("Ю", Keys.OemPeriod, 10 * (k + m), y, k, h, Finger.Ring);
+            AddKey("/", Keys.OemQuestion, 11 * (k + m), y, k, h, Finger.Ring);
+            AddKey("Shift", Keys.RShiftKey, 12 * (k + m), y, k * 2, h);
+
+            y += h + m;
+            AddKey("Ctrl", Keys.ControlKey, 0, y, k * 2, h);
+            AddKey("Alt", Keys.Menu, 2 * (k + m), y, k * 2, h);
+            AddKey("Пробел", Keys.Space, 4 * (k + m), y, k * 6, h, Finger.Thumb);
+            AddKey("Alt", Keys.Menu, 10 * (k + m), y, k * 2, h);
+            AddKey("Ctrl", Keys.ControlKey, 12 * (k + m), y, k * 2, h);
         }
-        private void MainForm_KeyDown(object sender, KeyEventArgs e)
+
+        private void Form_KeyDown(object sender, KeyEventArgs e)
         {
-            if (keyButtons.TryGetValue(e.KeyCode, out Button btn))
+            if (keyButtons.TryGetValue(e.KeyCode, out var btn))
             {
-                btn.BackColor = Color.Black;
-                btn.ForeColor = Color.White;
+                if (btn.Tag is Color baseColor)
+                    btn.BackColor = Darken(baseColor);
             }
         }
-        private Finger GetFingerByKey(Keys key)
-        {
-            if ("QAZ".Contains(key.ToString())) return Finger.LeftPinky;
-            if ("WSX".Contains(key.ToString())) return Finger.LeftRing;
-            if ("EDC".Contains(key.ToString())) return Finger.LeftMiddle;
-            if ("RFVTGB".Contains(key.ToString())) return Finger.LeftIndex;
-            if ("YHNUJM".Contains(key.ToString())) return Finger.RightIndex;
-            if ("IK".Contains(key.ToString())) return Finger.RightMiddle;
-            if ("OL".Contains(key.ToString())) return Finger.RightRing;
-            return Finger.RightPinky;
-        }
 
-        private void MainForm_KeyUp(object sender, KeyEventArgs e)
+        private void Form_KeyUp(object sender, KeyEventArgs e)
         {
-            if (keyButtons.TryGetValue(e.KeyCode, out Button btn))
+            if (keyButtons.TryGetValue(e.KeyCode, out var btn))
             {
-                btn.ForeColor = Color.Black;
-                btn.BackColor = FingerColor(GetFingerByKey(e.KeyCode));
+                if (btn.Tag is Color baseColor)
+                    btn.BackColor = baseColor;
             }
         }
+
+        private void CenterKeyboard()
+        {
+            int minX = int.MaxValue;
+            int maxX = 0;
+
+            foreach (Control c in keyboardPanel.Controls)
+            {
+                minX = Math.Min(minX, c.Left);
+                maxX = Math.Max(maxX, c.Right);
+            }
+
+            int keyboardWidth = maxX - minX;
+            int offsetX = (keyboardPanel.Width - keyboardWidth) / 2 - minX;
+
+            foreach (Control c in keyboardPanel.Controls)
+            {
+                c.Left += offsetX;
+            }
+        }
+
     }
 }

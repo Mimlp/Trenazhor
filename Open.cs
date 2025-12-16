@@ -12,6 +12,7 @@ namespace KeyboardTrainer
 {
     public partial class Open : Form
     {
+        private HashSet<Keys> pressedKeys = new HashSet<Keys>();
         public Open()
         {
             InitializeComponent();
@@ -29,10 +30,15 @@ namespace KeyboardTrainer
         }
         private void Open_KeyDown(object sender, KeyEventArgs e)
         {
+            if (pressedKeys.Contains(e.KeyCode))
+                return; 
+
+            pressedKeys.Add(e.KeyCode);
             HighlightButton(e.KeyCode, true);
         }
         private void Open_KeyUp(object sender, KeyEventArgs e)
         {
+            pressedKeys.Remove(e.KeyCode);
             HighlightButton(e.KeyCode, false);
         }
         private void HighlightButton(Keys key, bool pressed)
@@ -66,14 +72,17 @@ namespace KeyboardTrainer
                 if (pressed)
                 {
                     target.BackColor = Color.Cornsilk;
+                    target.Tag = target.Size;
                     target.Size = new Size(target.Width + 4, target.Height + 4);
+                    target.BringToFront();
                 }
                 else
                 {
                     target.BackColor = Color.MistyRose;
-                    target.Size = new Size(target.Width - 4, target.Height - 4);
+                    target.Size = (Size)target.Tag;
                 }
             }
+            else return;
         }
     }
 }
