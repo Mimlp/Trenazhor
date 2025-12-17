@@ -19,7 +19,7 @@ namespace KeyboardTrainer
             InitializeComponent();
             InitializeGrid();
             InitializeInfo(300, 95, 45, 25);//ЭТО НУЖНО ВЫЧИСЛЯТЬ! ПОКА ПРОСТО ПРОБНЫЙ
-            InitializeChart();//ДЛЯ ГРАФИКА ТОЖЕ НУЖНО ПРОПИСАТЬ ЛОГИКУ (не появления, а заполнения данными, чтобы сам график высчитывал)
+            InitializeChart();//ДЛЯ ГРАФИКА ТОЖЕ НУЖНО ПРОПИСАТЬ ЛОГИКУ (не появления, а заполнения данными, чтобы сам график строился по ним)
             checkBox1.Checked = true;
             chart1.Invalidate();
         }

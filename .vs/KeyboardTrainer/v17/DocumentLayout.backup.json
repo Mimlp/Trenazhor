@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\julia\\Documents\\GitHub\\Trenaz\\Trenazhor\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|c:\\users\\julia\\documents\\github\\trenaz\\trenazhor\\statisticsuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:statisticsuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|c:\\users\\julia\\documents\\github\\trenaz\\trenazhor\\open.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:open.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|c:\\users\\julia\\documents\\github\\trenaz\\trenazhor\\statisticsuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:statisticsuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|c:\\users\\julia\\documents\\github\\trenaz\\trenazhor\\open.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:open.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|c:\\users\\julia\\documents\\github\\trenaz\\trenazhor\\statisticsadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:statisticsadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|c:\\users\\julia\\documents\\github\\trenaz\\trenazhor\\statisticsadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:statisticsadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,26 +31,51 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "StatisticsUser.cs",
-              "DocumentMoniker": "C:\\Users\\julia\\Documents\\GitHub\\Trenaz\\Trenazhor\\StatisticsUser.cs",
-              "RelativeDocumentMoniker": "StatisticsUser.cs",
-              "ToolTip": "C:\\Users\\julia\\Documents\\GitHub\\Trenaz\\Trenazhor\\StatisticsUser.cs",
-              "RelativeToolTip": "StatisticsUser.cs",
-              "ViewState": "AgIAAGUAAAAAAAAAAAAAwHEAAAAjAAAAAAAAAA==",
+              "Title": "Open.cs",
+              "DocumentMoniker": "C:\\Users\\julia\\Documents\\GitHub\\Trenaz\\Trenazhor\\Open.cs",
+              "RelativeDocumentMoniker": "Open.cs",
+              "ToolTip": "C:\\Users\\julia\\Documents\\GitHub\\Trenaz\\Trenazhor\\Open.cs",
+              "RelativeToolTip": "Open.cs",
+              "ViewState": "AgIAAEYAAAAAAAAAAAAkwFUAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-17T09:22:48.502Z",
+              "WhenOpened": "2025-12-17T14:41:34.077Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "StatisticsUser.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "C:\\Users\\julia\\Documents\\GitHub\\Trenaz\\Trenazhor\\StatisticsUser.cs",
-              "RelativeDocumentMoniker": "StatisticsUser.cs",
-              "ToolTip": "C:\\Users\\julia\\Documents\\GitHub\\Trenaz\\Trenazhor\\StatisticsUser.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "StatisticsUser.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Title": "Open.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "C:\\Users\\julia\\Documents\\GitHub\\Trenaz\\Trenazhor\\Open.cs",
+              "RelativeDocumentMoniker": "Open.cs",
+              "ToolTip": "C:\\Users\\julia\\Documents\\GitHub\\Trenaz\\Trenazhor\\Open.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "Open.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-17T09:21:51.537Z",
+              "WhenOpened": "2025-12-17T14:41:31.622Z",
+              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "StatisticsAdmin.cs",
+              "DocumentMoniker": "C:\\Users\\julia\\Documents\\GitHub\\Trenaz\\Trenazhor\\StatisticsAdmin.cs",
+              "RelativeDocumentMoniker": "StatisticsAdmin.cs",
+              "ToolTip": "C:\\Users\\julia\\Documents\\GitHub\\Trenaz\\Trenazhor\\StatisticsAdmin.cs",
+              "RelativeToolTip": "StatisticsAdmin.cs",
+              "ViewState": "AgIAAHQAAAAAAAAAAAAQwIgAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-17T13:00:03.616Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "StatisticsAdmin.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "C:\\Users\\julia\\Documents\\GitHub\\Trenaz\\Trenazhor\\StatisticsAdmin.cs",
+              "RelativeDocumentMoniker": "StatisticsAdmin.cs",
+              "ToolTip": "C:\\Users\\julia\\Documents\\GitHub\\Trenaz\\Trenazhor\\StatisticsAdmin.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "StatisticsAdmin.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-17T12:59:58.544Z",
               "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
             }
           ]

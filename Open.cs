@@ -84,5 +84,15 @@ namespace KeyboardTrainer
             }
             else return;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(
+                "Приложение «Keyboard Trainer» предназначено для обучения слепой печати.\n\n",
+                "Описание приложения",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
+        }
     }
 }
