@@ -106,5 +106,13 @@ namespace KeyboardTrainer
             form1.Show();
             this.Hide();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            StatisticsUser su = new StatisticsUser();
+            su.FormClosed += (s, args) => this.Close();
+            su.Show();
+            this.Hide();
+        }
     }
 }
