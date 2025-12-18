@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using Npgsql;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
@@ -14,18 +15,22 @@ namespace KeyboardTrainer
 {
     public partial class StatisticsAdmin : Form
     {
+        private string connectionString = "Host=localhost;Port=5432;Username=postgres;Password=Krendel25;Database=Trenazhor";
+        private bool isUsersMode = true;
+
         public StatisticsAdmin()
         {
             InitializeComponent();
             checkBox1.Checked = true;
             InitializeChart();
+            LoadDataForUsers();
             chart1.Invalidate();
         }
 
         protected override void OnPaintBackground(PaintEventArgs e)
         {
-            Color darkBrown = Color.FromArgb(65, 160, 255);// синий
-            Color gold = Color.FromArgb(78, 255, 81);// зеленый
+            Color darkBrown = Color.FromArgb(65, 160, 255);
+            Color gold = Color.FromArgb(78, 255, 81);
 
             using (LinearGradientBrush brush = new LinearGradientBrush(
                 this.ClientRectangle,
@@ -55,25 +60,81 @@ namespace KeyboardTrainer
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.Columns.Clear();
 
-            var colId = new DataGridViewTextBoxColumn { HeaderText = "ID", Width = 60 };
-            var colLogin = new DataGridViewTextBoxColumn { HeaderText = "Логин", AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill, MinimumWidth = 150 };
-            var colData = new DataGridViewTextBoxColumn { DataPropertyName = "Data", HeaderText = "Дата", Width = 120, MinimumWidth = 100 };
-            var colEx = new DataGridViewTextBoxColumn { DataPropertyName = "Status", HeaderText = "Упражнение", AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill, MinimumWidth = 150 };
-            var colSpeed = new DataGridViewTextBoxColumn { DataPropertyName = "Speed", HeaderText = "Скорость (зн/мин)", Width = 130, MinimumWidth = 110 };
-            var colAccuracy = new DataGridViewTextBoxColumn { DataPropertyName = "Accuracy", HeaderText = "Точность (%)", Width = 120, MinimumWidth = 100 };
-            var colTime = new DataGridViewTextBoxColumn { DataPropertyName = "Time", HeaderText = "Время выполнения", Width = 120, MinimumWidth = 100 };
-            var colError = new DataGridViewTextBoxColumn { DataPropertyName = "Error", HeaderText = "Ошибки", Width = 80, MinimumWidth = 60 };
+            var colId = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "ID сессии",
+                Width = 80,
+                DataPropertyName = "session_id",
+                Name = "session_id"
+            };
+            var colLogin = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Логин",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
+                MinimumWidth = 150,
+                DataPropertyName = "login",
+                Name = "login"
+            };
+            var colData = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Дата завершения",
+                Width = 150,
+                DataPropertyName = "date_completed",
+                Name = "date_completed"
+            };
+            var colEx = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Упражнение",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
+                MinimumWidth = 150,
+                DataPropertyName = "exercise_name",
+                Name = "exercise_name"
+            };
+            var colSpeed = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Скорость (зн/мин)",
+                Width = 130,
+                MinimumWidth = 110,
+                DataPropertyName = "typing_speed",
+                Name = "typing_speed"
+            };
+            var colAccuracy = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Точность (%)",
+                Width = 120,
+                MinimumWidth = 100,
+                DataPropertyName = "accuracy",
+                Name = "accuracy"
+            };
+            var colTime = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Время выполнения",
+                Width = 120,
+                MinimumWidth = 100,
+                DataPropertyName = "time_spent",
+                Name = "time_spent"
+            };
+            var colError = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Ошибки",
+                Width = 80,
+                MinimumWidth = 60,
+                DataPropertyName = "error_count",
+                Name = "error_count"
+            };
 
-            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(67, 202, 128); // зеленый для заголовков
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(67, 202, 128);
             dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font(dataGridView1.Font, FontStyle.Bold);
 
-            dataGridView1.DefaultCellStyle.BackColor = Color.FromArgb(200, 255, 200); // базовый светло-зеленый
-            dataGridView1.DefaultCellStyle.ForeColor = Color.White;
+            dataGridView1.DefaultCellStyle.BackColor = Color.FromArgb(200, 255, 200);
+            dataGridView1.DefaultCellStyle.ForeColor = Color.Black;
             dataGridView1.DefaultCellStyle.SelectionBackColor = Color.FromArgb(157, 158, 251);
             dataGridView1.DefaultCellStyle.SelectionForeColor = Color.White;
 
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { colId, colLogin, colData, colEx, colSpeed, colAccuracy, colTime, colError });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] {
+                colId, colLogin, colData, colEx, colSpeed, colAccuracy, colTime, colError
+            });
         }
 
         private void InitializeGridForExercises()
@@ -86,39 +147,345 @@ namespace KeyboardTrainer
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.Columns.Clear();
 
-            var colId = new DataGridViewTextBoxColumn { HeaderText = "ID", Width = 60 };
-            var colName = new DataGridViewTextBoxColumn { HeaderText = "Название", AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill, MinimumWidth = 150 };
-            var colLevel = new DataGridViewTextBoxColumn { HeaderText = "Уровень сложности", Width = 130 };
-            var colLength = new DataGridViewTextBoxColumn { HeaderText = "Длина (символы)", Width = 120 };
-            var colCompleted = new DataGridViewTextBoxColumn { HeaderText = "Количество прохождений", Width = 120 };
-            var colSpeed = new DataGridViewTextBoxColumn { HeaderText = "Средняя скорость (зн/мин)", Width = 120 };
-            var colAccuracy = new DataGridViewTextBoxColumn { HeaderText = "Средняя точность (%)", Width = 120 };
-            var colTime = new DataGridViewTextBoxColumn { HeaderText = "Среднее время на упражнение (с)", Width = 120 };
+            var colId = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "ID упражнения",
+                Width = 100,
+                DataPropertyName = "exercise_id",
+                Name = "exercise_id"
+            };
+            var colName = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Название",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
+                MinimumWidth = 150,
+                DataPropertyName = "name",
+                Name = "name"
+            };
+            var colLevel = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Уровень сложности",
+                Width = 130,
+                DataPropertyName = "level_name",
+                Name = "level_name"
+            };
+            var colLength = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Длина (символы)",
+                Width = 120,
+                DataPropertyName = "length",
+                Name = "length"
+            };
+            var colCompleted = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Количество прохождений",
+                Width = 150,
+                DataPropertyName = "completed_count",
+                Name = "completed_count"
+            };
+            var colSpeed = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Средняя скорость (зн/мин)",
+                Width = 150,
+                DataPropertyName = "avg_speed",
+                Name = "avg_speed"
+            };
+            var colAccuracy = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Средняя точность (%)",
+                Width = 150,
+                DataPropertyName = "avg_accuracy",
+                Name = "avg_accuracy"
+            };
+            var colTime = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Среднее время (с)",
+                Width = 120,
+                DataPropertyName = "avg_time",
+                Name = "avg_time"
+            };
 
-            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(67, 202, 128); // зеленый для заголовков
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(67, 202, 128);
             dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font(dataGridView1.Font, FontStyle.Bold);
 
-            dataGridView1.DefaultCellStyle.BackColor = Color.FromArgb(200, 255, 200); // базовый светло-зеленый
-            dataGridView1.DefaultCellStyle.ForeColor = Color.White;
+            dataGridView1.DefaultCellStyle.BackColor = Color.FromArgb(200, 255, 200);
+            dataGridView1.DefaultCellStyle.ForeColor = Color.Black;
             dataGridView1.DefaultCellStyle.SelectionBackColor = Color.FromArgb(157, 158, 251);
             dataGridView1.DefaultCellStyle.SelectionForeColor = Color.White;
 
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { colId, colName, colLevel, colLength, colCompleted, colSpeed, colAccuracy, colTime });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] {
+                colId, colName, colLevel, colLength, colCompleted, colSpeed, colAccuracy, colTime
+            });
         }
 
-        double[] accuracyDataUser = { 30, 52, 83, 61, 95, 96, 94 };//Графики можете что угодно от чего строить, просто тогда поменяйте label3.Text
+        // Загрузка данных для пользовательского режима
+        private void LoadDataForUsers()
+        {
+            try
+            {
+                string searchText = textBox1.ForeColor == Color.Gray ? "" : textBox1.Text;
 
+                using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+                {
+                    string query = @"
+                        SELECT 
+                            gs.session_id,
+                            gs.date_completed,
+                            gs.time_spent,
+                            gs.typing_speed,
+                            gs.error_count,
+                            gs.error_percent,
+                            (100 - gs.error_percent) as accuracy,
+                            au.login,
+                            e.name as exercise_name
+                        FROM game_session gs
+                        INNER JOIN app_user au ON gs.user_id = au.user_id
+                        INNER JOIN exercise e ON gs.exercise_id = e.exercise_id
+                        WHERE (@search = '' OR au.login ILIKE '%' || @search || '%')
+                        ORDER BY gs.date_completed DESC";
+
+                    using (NpgsqlCommand command = new NpgsqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@search", searchText);
+
+                        connection.Open();
+                        NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(command);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        dataGridView1.DataSource = dataTable;
+                    }
+                }
+
+                // Вычисляем статистику для панели информации
+                CalculateUserStatistics();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка загрузки данных: {ex.Message}", "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Загрузка данных для режима упражнений
+        private void LoadDataForExercises()
+        {
+            try
+            {
+                string searchText = textBox1.ForeColor == Color.Gray ? "" : textBox1.Text;
+
+                using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+                {
+                    string query = @"
+                        SELECT 
+                            e.exercise_id,
+                            e.name,
+                            e.length,
+                            l.level_name,
+                            COUNT(gs.session_id) as completed_count,
+                            ROUND(AVG(gs.typing_speed::numeric), 1) as avg_speed,
+                            ROUND(AVG((100 - gs.error_percent)::numeric), 1) as avg_accuracy,
+                            ROUND(AVG(gs.time_spent::numeric), 1) as avg_time
+                        FROM exercise e
+                        LEFT JOIN level l ON e.level_id = l.level_id
+                        LEFT JOIN game_session gs ON e.exercise_id = gs.exercise_id
+                        WHERE (@search = '' OR e.name ILIKE '%' || @search || '%')
+                        GROUP BY e.exercise_id, e.name, e.length, l.level_name
+                        ORDER BY e.exercise_id";
+
+                    using (NpgsqlCommand command = new NpgsqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@search", searchText);
+
+                        connection.Open();
+                        NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(command);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        dataGridView1.DataSource = dataTable;
+                    }
+                }
+
+                // Вычисляем статистику для панели информации
+                CalculateExerciseStatistics();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка загрузки данных: {ex.Message}", "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Вычисление статистики для пользовательского режима
+        private void CalculateUserStatistics()
+        {
+            try
+            {
+                if (dataGridView1.Rows.Count == 0)
+                {
+                    InitializeInfo(0, 0, 0, 0);
+                    return;
+                }
+
+                double totalSpeed = 0;
+                double totalAccuracy = 0;
+                double totalTime = 0;
+                int count = 0;
+
+                // Используем имена колонок, которые мы задали в InitializeGridForUsers
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    if (row.IsNewRow) continue;
+
+                    // Проверяем существование колонки
+                    if (dataGridView1.Columns.Contains("typing_speed"))
+                    {
+                        var speedCell = row.Cells["typing_speed"];
+                        if (speedCell != null && speedCell.Value != null &&
+                            !Convert.IsDBNull(speedCell.Value) &&
+                            double.TryParse(speedCell.Value.ToString(), out double speed))
+                        {
+                            totalSpeed += speed;
+                        }
+                    }
+
+                    if (dataGridView1.Columns.Contains("accuracy"))
+                    {
+                        var accuracyCell = row.Cells["accuracy"];
+                        if (accuracyCell != null && accuracyCell.Value != null &&
+                            !Convert.IsDBNull(accuracyCell.Value) &&
+                            double.TryParse(accuracyCell.Value.ToString(), out double accuracy))
+                        {
+                            totalAccuracy += accuracy;
+                        }
+                    }
+
+                    if (dataGridView1.Columns.Contains("time_spent"))
+                    {
+                        var timeCell = row.Cells["time_spent"];
+                        if (timeCell != null && timeCell.Value != null &&
+                            !Convert.IsDBNull(timeCell.Value) &&
+                            double.TryParse(timeCell.Value.ToString(), out double time))
+                        {
+                            totalTime += time;
+                        }
+                    }
+
+                    count++;
+                }
+
+                double avgSpeed = count > 0 ? Math.Round(totalSpeed / count, 1) : 0;
+                double avgAccuracy = count > 0 ? Math.Round(totalAccuracy / count, 1) : 0;
+                double avgTime = count > 0 ? Math.Round(totalTime / count, 1) : 0;
+
+                InitializeInfo(avgSpeed, avgAccuracy, avgTime, count);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка вычисления статистики: {ex.Message}", "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Вычисление статистики для режима упражнений
+        private void CalculateExerciseStatistics()
+        {
+            try
+            {
+                if (dataGridView1.Rows.Count == 0)
+                {
+                    InitializeInfo(0, 0, 0, 0);
+                    return;
+                }
+
+                double totalSpeed = 0;
+                double totalAccuracy = 0;
+                double totalTime = 0;
+                int totalCompleted = 0;
+                int count = 0;
+
+                // Используем имена колонок, которые мы задали в InitializeGridForExercises
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    if (row.IsNewRow) continue;
+
+                    // Проверяем существование колонки и корректность данных
+                    if (dataGridView1.Columns.Contains("avg_speed"))
+                    {
+                        var speedCell = row.Cells["avg_speed"];
+                        if (speedCell != null && speedCell.Value != null &&
+                            !Convert.IsDBNull(speedCell.Value) &&
+                            speedCell.Value.ToString() != "" &&
+                            double.TryParse(speedCell.Value.ToString(), out double speed))
+                        {
+                            totalSpeed += speed;
+                        }
+                    }
+
+                    if (dataGridView1.Columns.Contains("avg_accuracy"))
+                    {
+                        var accuracyCell = row.Cells["avg_accuracy"];
+                        if (accuracyCell != null && accuracyCell.Value != null &&
+                            !Convert.IsDBNull(accuracyCell.Value) &&
+                            accuracyCell.Value.ToString() != "" &&
+                            double.TryParse(accuracyCell.Value.ToString(), out double accuracy))
+                        {
+                            totalAccuracy += accuracy;
+                        }
+                    }
+
+                    if (dataGridView1.Columns.Contains("avg_time"))
+                    {
+                        var timeCell = row.Cells["avg_time"];
+                        if (timeCell != null && timeCell.Value != null &&
+                            !Convert.IsDBNull(timeCell.Value) &&
+                            timeCell.Value.ToString() != "" &&
+                            double.TryParse(timeCell.Value.ToString(), out double time))
+                        {
+                            totalTime += time;
+                        }
+                    }
+
+                    if (dataGridView1.Columns.Contains("completed_count"))
+                    {
+                        var completedCell = row.Cells["completed_count"];
+                        if (completedCell != null && completedCell.Value != null &&
+                            !Convert.IsDBNull(completedCell.Value) &&
+                            int.TryParse(completedCell.Value.ToString(), out int completed))
+                        {
+                            totalCompleted += completed;
+                        }
+                    }
+
+                    count++;
+                }
+
+                double avgSpeed = count > 0 ? Math.Round(totalSpeed / count, 1) : 0;
+                double avgAccuracy = count > 0 ? Math.Round(totalAccuracy / count, 1) : 0;
+                double avgTime = count > 0 ? Math.Round(totalTime / count, 1) : 0;
+
+                InitializeInfo(avgSpeed, avgAccuracy, avgTime, totalCompleted);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка вычисления статистики: {ex.Message}", "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        double[] accuracyDataUser = { 30, 52, 83, 61, 95, 96, 94 };
         double[] accuracyDataEx = { 110, 260, 470, 280, 290, 300, 310 };
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox1.Checked)
             {
+                isUsersMode = true;
                 checkBox2.Checked = false;
                 SetPlaceholder(textBox1, "Поиск по логину");
                 InitializeGridForUsers();
-                InitializeInfo(300, 95, 45, 25);//СЮДА ПАРАМЕТРЫ ДЛЯ ПОЛЬЗОВАТЕЛЯ
+                LoadDataForUsers();
                 label3.Text = "Изменение точности по мере обучения";
                 InitializeChart();
                 DrawGraph(accuracyDataUser);
@@ -129,10 +496,11 @@ namespace KeyboardTrainer
         {
             if (checkBox2.Checked)
             {
+                isUsersMode = false;
                 checkBox1.Checked = false;
                 SetPlaceholder(textBox1, "Поиск по упражнению");
                 InitializeGridForExercises();
-                InitializeInfo(300, 95, 45, 25);//СЮДА ПАРАМЕТРЫ ДЛЯ УПРАЖНЕНИЯ
+                LoadDataForExercises();
                 label3.Text = "Изменение точности по всем пользователям для выбранного упражнения";
                 InitializeChart();
                 DrawGraph(accuracyDataEx);
@@ -152,14 +520,15 @@ namespace KeyboardTrainer
                 FlowDirection = FlowDirection.TopDown,
                 WrapContents = false
             };
-            this.Controls.Add(infoPanel);
+
             flow.Controls.Add(CreateInfoLabel($"Средняя скорость: {avgSpeed} зн./мин"));
             flow.Controls.Add(CreateInfoLabel($"Средняя точность: {avgAccuracy}%"));
             flow.Controls.Add(CreateInfoLabel($"Среднее время на упражнение: {avgTime}с"));
             flow.Controls.Add(CreateInfoLabel($"Количество завершённых упражнений: {completedCount}"));
+
             infoPanel.Controls.Add(flow);
         }
-        
+
         private Label CreateInfoLabel(string text)
         {
             return new Label
@@ -172,10 +541,14 @@ namespace KeyboardTrainer
                 Margin = new Padding(0, 0, 0, 5)
             };
         }
+
         private void SetPlaceholder(TextBox box, string placeholder)
         {
-            box.ForeColor = Color.Gray;
-            box.Text = placeholder;
+            if (string.IsNullOrWhiteSpace(box.Text) || box.Text == placeholder)
+            {
+                box.ForeColor = Color.Gray;
+                box.Text = placeholder;
+            }
 
             box.GotFocus += (s, e) =>
             {
@@ -195,6 +568,7 @@ namespace KeyboardTrainer
                 }
             };
         }
+
         private void InitializeChart()
         {
             chart1.Legends.Clear();
@@ -223,6 +597,7 @@ namespace KeyboardTrainer
             chart1.ChartAreas[0].BackColor = Color.FromArgb(90, Color.White);
             chart1.ChartAreas[0].BorderColor = Color.FromArgb(90, Color.White);
         }
+
         private void DrawGraph(double[] values)
         {
             chart1.Series.Clear();
@@ -245,6 +620,56 @@ namespace KeyboardTrainer
 
             chart1.Series.Add(series);
             area.RecalculateAxesScale();
+        }
+
+        // Обработчик поиска
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox1.ForeColor != Color.Gray)
+            {
+                if (isUsersMode)
+                    LoadDataForUsers();
+                else
+                    LoadDataForExercises();
+            }
+        }
+
+        // Форматирование ячеек DataGridView
+        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.Value == null || e.Value == DBNull.Value || e.Value.ToString() == "")
+                return;
+
+            // Форматирование даты
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "date_completed" &&
+                e.Value is DateTime)
+            {
+                e.Value = ((DateTime)e.Value).ToString("dd.MM.yyyy HH:mm");
+                e.FormattingApplied = true;
+            }
+
+            // Форматирование числовых значений для пользовательского режима
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "typing_speed" ||
+                dataGridView1.Columns[e.ColumnIndex].Name == "accuracy")
+            {
+                if (double.TryParse(e.Value.ToString(), out double value))
+                {
+                    e.Value = Math.Round(value, 1).ToString();
+                    e.FormattingApplied = true;
+                }
+            }
+
+            // Форматирование числовых значений для режима упражнений
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "avg_speed" ||
+                dataGridView1.Columns[e.ColumnIndex].Name == "avg_accuracy" ||
+                dataGridView1.Columns[e.ColumnIndex].Name == "avg_time")
+            {
+                if (double.TryParse(e.Value.ToString(), out double value))
+                {
+                    e.Value = Math.Round(value, 1).ToString();
+                    e.FormattingApplied = true;
+                }
+            }
         }
     }
 }
