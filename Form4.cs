@@ -16,6 +16,15 @@ namespace KeyboardTrainer
         public Form4()
         {
             InitializeComponent();
+
+            // Проверяем, авторизован ли пользователь
+            if (!UserSession.IsLoggedIn())
+            {
+                MessageBox.Show("Пожалуйста, авторизуйтесь.", "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
+            }
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -39,10 +48,10 @@ namespace KeyboardTrainer
 
             PointF[] salad =
             {
-            new PointF(0f, h), 
-            new PointF(triangleWidth, h),
-            new PointF(0f, h - triangleHeight)
-        };
+                new PointF(0f, h),
+                new PointF(triangleWidth, h),
+                new PointF(0f, h - triangleHeight)
+            };
 
             float centerX = w / 2f;
             float centerY = h / 2f;
@@ -101,6 +110,8 @@ namespace KeyboardTrainer
 
         private void button3_Click(object sender, EventArgs e)
         {
+            // Выход - очищаем сессию
+            UserSession.Clear();
             Form1 form1 = new Form1();
             form1.FormClosed += (s, args) => this.Close();
             form1.Show();

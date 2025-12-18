@@ -44,8 +44,8 @@ namespace KeyboardTrainer
             {
                 e.Graphics.DrawPath(pen, path);
             }
-
         }
+
         private void SetPlaceholder(TextBox box, string placeholder)
         {
             box.ForeColor = Color.Gray;
@@ -69,8 +69,10 @@ namespace KeyboardTrainer
                 }
             };
         }
+
         private readonly string connString =
             "Host=localhost;Port=5432;Username=postgres;Password=Krendel25;Database=Trenazhor";
+
         private void button2_Click(object sender, EventArgs e)
         {
             string login = textBox4.Text.Trim();
@@ -103,6 +105,7 @@ namespace KeyboardTrainer
             }
             RegisterUser(login, password);
         }
+
         private void RegisterUser(string login, string password)
         {
             try
@@ -141,10 +144,16 @@ namespace KeyboardTrainer
                         userRoleId = (int)result;
                     }
 
-                    // 3. Добавляем нового пользователя
+                    // 3. Добавляем нового пользователя и получаем данные
                     string insertSql = @"
-                        INSERT INTO app_user (login, password, role_id) 
-                        VALUES (@login, @password, @role_id);";
+                        WITH inserted_user AS (
+                            INSERT INTO app_user (login, password, role_id) 
+                            VALUES (@login, @password, @role_id)
+                            RETURNING user_id, blocked, role_id
+                        )
+                        SELECT iu.user_id, iu.blocked, r.role_name
+                        FROM inserted_user iu
+                        JOIN role r ON iu.role_id = r.role_id;";
 
                     using (var insertCmd = new NpgsqlCommand(insertSql, conn))
                     {
@@ -152,21 +161,29 @@ namespace KeyboardTrainer
                         insertCmd.Parameters.AddWithValue("password", password);
                         insertCmd.Parameters.AddWithValue("role_id", userRoleId);
 
-                        int rowsAffected = insertCmd.ExecuteNonQuery();
+                        using (var reader = insertCmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                int userId = reader.GetInt32(reader.GetOrdinal("user_id"));
+                                bool blocked = reader.GetBoolean(reader.GetOrdinal("blocked"));
+                                string roleName = reader.GetString(reader.GetOrdinal("role_name"));
 
-                        if (rowsAffected > 0)
-                        {
-                            MessageBox.Show("Пользователь успешно зарегистрирован!");
-                            textBox4.Text = "";
-                            textBox3.Text = "";
-                            Form4 uselForm = new Form4();
-                            uselForm.FormClosed += (s, args) => this.Close();
-                            uselForm.Show();
-                            this.Hide();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Ошибка при регистрации пользователя.");
+                                // Сохраняем данные в UserSession
+                                UserSession.SetUser(userId, login, roleName, blocked);
+
+                                MessageBox.Show("Пользователь успешно зарегистрирован!");
+                                textBox4.Text = "";
+                                textBox3.Text = "";
+                                Form4 uselForm = new Form4();
+                                uselForm.FormClosed += (s, args) => this.Close();
+                                uselForm.Show();
+                                this.Hide();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Ошибка при регистрации пользователя.");
+                            }
                         }
                     }
                 }

@@ -170,6 +170,7 @@
     <Compile Include="StatisticsUser.Designer.cs">
       <DependentUpon>StatisticsUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserSession.cs" />
     <EmbeddedResource Include="Create.resx">
       <DependentUpon>Create.cs</DependentUpon>
     </EmbeddedResource>

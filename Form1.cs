@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
 using Npgsql;
-using System.Security.Cryptography;
 
 namespace KeyboardTrainer
 {
@@ -45,8 +44,8 @@ namespace KeyboardTrainer
             {
                 e.Graphics.DrawPath(pen, path);
             }
-
         }
+
         private void SetPlaceholder(TextBox box, string placeholder)
         {
             box.ForeColor = Color.Gray;
@@ -73,9 +72,10 @@ namespace KeyboardTrainer
 
         //=== КОНЕЦ ВИЗУАЛИЗАЦИИ ===
         //=== АВТОРИЗАЦИЯ ===
-        
+
         private readonly string connString =
             "Host=localhost;Port=5432;Username=postgres;Password=Krendel25;Database=Trenazhor";
+
         private void button1_Click(object sender, EventArgs e)
         {
             string login = textBox1.Text.Trim();
@@ -87,11 +87,6 @@ namespace KeyboardTrainer
                 if (string.IsNullOrEmpty(password) || string.IsNullOrEmpty(login))
                 {
                     MessageBox.Show("Введите логин и пароль администратора.");
-                    return;
-                }
-                if (!login.Equals("Admin", StringComparison.OrdinalIgnoreCase))
-                {
-                    MessageBox.Show("Для входа администратора используйте другой логин");
                     return;
                 }
                 AuthorizeAdmin(login, password);
@@ -106,6 +101,7 @@ namespace KeyboardTrainer
                 AuthorizeUser(login, password);
             }
         }
+
         private void AuthorizeAdmin(string login, string password)
         {
             try
@@ -115,7 +111,7 @@ namespace KeyboardTrainer
                     conn.Open();
 
                     string sql = @"
-                        SELECT a.user_id, a.password
+                        SELECT a.user_id, a.password, a.blocked
                         FROM app_user a
                         JOIN role r ON a.role_id = r.role_id
                         WHERE LOWER(a.login) = LOWER(@login) 
@@ -136,6 +132,7 @@ namespace KeyboardTrainer
 
                             string dbPassword = reader.GetString(reader.GetOrdinal("password"));
                             int userId = reader.GetInt32(reader.GetOrdinal("user_id"));
+                            bool blocked = reader.GetBoolean(reader.GetOrdinal("blocked"));
 
                             if (password != dbPassword)
                             {
@@ -143,7 +140,9 @@ namespace KeyboardTrainer
                                 return;
                             }
 
-                            // Успешный вход
+                            // Успешный вход - сохраняем данные в UserSession
+                            UserSession.SetUser(userId, login, "admin", blocked);
+
                             MessageBox.Show($"Добро пожаловать, администратор!");
                             Form3 adminPanel = new Form3();
                             adminPanel.FormClosed += (s, args) => this.Close();
@@ -158,6 +157,7 @@ namespace KeyboardTrainer
                 MessageBox.Show("Ошибка подключения: " + ex.Message);
             }
         }
+
         private void AuthorizeUser(string login, string password)
         {
             try
@@ -167,7 +167,7 @@ namespace KeyboardTrainer
                     conn.Open();
 
                     string sql = @"
-                        SELECT a.user_id, a.login, a.password, r.role_name 
+                        SELECT a.user_id, a.login, a.password, r.role_name, a.blocked 
                         FROM app_user a 
                         JOIN role r ON a.role_id = r.role_id 
                         WHERE a.login = @login;";
@@ -187,12 +187,17 @@ namespace KeyboardTrainer
                             string dbPassword = reader.GetString(reader.GetOrdinal("password"));
                             string role = reader.GetString(reader.GetOrdinal("role_name"));
                             int userId = reader.GetInt32(reader.GetOrdinal("user_id"));
+                            bool blocked = reader.GetBoolean(reader.GetOrdinal("blocked"));
+                            string dbLogin = reader.GetString(reader.GetOrdinal("login"));
 
                             if (password != dbPassword)
                             {
                                 MessageBox.Show("Неверный пароль.");
                                 return;
                             }
+
+                            // Успешный вход - сохраняем данные в UserSession
+                            UserSession.SetUser(userId, dbLogin, role, blocked);
 
                             if (role.Equals("user", StringComparison.OrdinalIgnoreCase))
                             {

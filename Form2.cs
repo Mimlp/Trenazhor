@@ -16,6 +16,16 @@ namespace KeyboardTrainer
         public Form2()
         {
             InitializeComponent();
+
+            // Проверяем, авторизован ли пользователь
+            if (!UserSession.IsLoggedIn())
+            {
+                MessageBox.Show("Пожалуйста, авторизуйтесь.", "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
+            }
+
             button1.Click += LevelButton_Click;
             button2.Click += LevelButton_Click;
             button3.Click += LevelButton_Click;
