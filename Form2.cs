@@ -44,7 +44,7 @@ namespace KeyboardTrainer
             label2.Visible = false;
         }
 
-        private readonly string connString = "Host=localhost;Port=5432;Username=postgres;Password=Krendel25;Database=Trenazhor";
+        private readonly string connString = "Host=localhost;Port=5432;Username=postgres;Password=root;Database=Trenazhor";
         private readonly string[] levelButtons = new[] { "Новичок", "Ученик", "Мастер клавиш", "Эксперт скорости", "Ниндзя" };
         private string currentSelectedLevel;
         private int currentLevelMaxErrors = 10;
@@ -124,6 +124,7 @@ namespace KeyboardTrainer
                             {
                                 exercises.Add(new ExerciseModel
                                 {
+                                    ExerciseId = reader.GetInt32(reader.GetOrdinal("exercise_id")),
                                     Name = reader.GetString(reader.GetOrdinal("name")),
                                     Length = reader.GetInt32(reader.GetOrdinal("length")),
                                     Text = reader.GetString(reader.GetOrdinal("text"))
@@ -196,7 +197,7 @@ namespace KeyboardTrainer
             };
             btnStart.Click += (s, e) =>
             {
-                GameField gf = new GameField(ex.Text, currentLevelMaxErrors, currentLevelMinTime, currentLevelMaxTime);
+                GameField gf = new GameField(ex.ExerciseId ,ex.Text, currentLevelMaxErrors, currentLevelMinTime, currentLevelMaxTime);
                 gf.FormClosed += (s1, args) => this.Close();
                 gf.Show();
                 this.Hide();

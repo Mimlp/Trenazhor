@@ -1,82 +1,46 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\",
+  "WorkspaceRootPath": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\\u0422\u041F\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\Trenazhor\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\statisticsuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:statisticsuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|c:\\users\\\u0430\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\desktop\\\u0442\u043F\\\u043D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\trenazhor\\gamefield.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:gamefield.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\statisticsuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:statisticsuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\form4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:form4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\registration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:registration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\create.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:create.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\exercisesadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:exercisesadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|c:\\users\\krend\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0443\u0447\u0451\u0431\u0430\\\u043B\u0430\u0431\u044B\\\u0442\u043F\\keyboard_trainer\\trenazhor\\usersession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:usersession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\form4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:form4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\registration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:registration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|c:\\users\\krend\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0443\u0447\u0451\u0431\u0430\\\u043B\u0430\u0431\u044B\\\u0442\u043F\\keyboard_trainer\\trenazhor\\statisticsadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:statisticsadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\open.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:open.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\statisticsadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:statisticsadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\gamefield.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\\u0422\u041F\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\Trenazhor\\gamefield.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:gamefield.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\open.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:open.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\\u0422\u041F\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\Trenazhor\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|c:\\users\\\u0430\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\desktop\\\u0442\u043F\\\u043D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\trenazhor\\registration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:registration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|c:\\users\\\u0430\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\desktop\\\u0442\u043F\\\u043D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\trenazhor\\statisticsuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:statisticsuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\\u0422\u041F\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\Trenazhor\\statisticsadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:statisticsadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\\u0422\u041F\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\Trenazhor\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\\u0422\u041F\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\Trenazhor\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\\u0422\u041F\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\Trenazhor\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\\u0422\u041F\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\Trenazhor\\statisticsadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{92D809F2-400E-46BB-AA38-C936D96A545F}|KeyboardTrainer.csproj|solutionrelative:statisticsadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -86,12 +50,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 4,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
@@ -101,125 +61,68 @@
               "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "UserSession.cs",
-              "DocumentMoniker": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\UserSession.cs",
-              "RelativeDocumentMoniker": "UserSession.cs",
-              "ToolTip": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\UserSession.cs",
-              "RelativeToolTip": "UserSession.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADAAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-18T17:50:03.752Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Form4.cs",
-              "DocumentMoniker": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\Form4.cs",
-              "RelativeDocumentMoniker": "Form4.cs",
-              "ToolTip": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\Form4.cs",
-              "RelativeToolTip": "Form4.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAAAAHoAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-18T17:39:30.77Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Form4.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\Form4.cs",
-              "RelativeDocumentMoniker": "Form4.cs",
-              "ToolTip": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\Form4.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "Form4.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-18T17:39:27.158Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Form3.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\Form3.cs",
-              "RelativeDocumentMoniker": "Form3.cs",
-              "ToolTip": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\Form3.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "Form3.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-18T17:39:24.423Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ExercisesAdmin.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\ExercisesAdmin.cs",
-              "RelativeDocumentMoniker": "ExercisesAdmin.cs",
-              "ToolTip": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\ExercisesAdmin.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "ExercisesAdmin.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-18T17:39:21.808Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Create.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\Create.cs",
-              "RelativeDocumentMoniker": "Create.cs",
-              "ToolTip": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\Create.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "Create.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-18T17:39:21.025Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "Registration.cs",
-              "DocumentMoniker": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\Registration.cs",
+              "DocumentMoniker": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\\u0422\u041F\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\Trenazhor\\Registration.cs",
               "RelativeDocumentMoniker": "Registration.cs",
-              "ToolTip": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\Registration.cs",
+              "ToolTip": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\\u0422\u041F\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\Trenazhor\\Registration.cs",
               "RelativeToolTip": "Registration.cs",
-              "ViewState": "AgIAAEUAAAAAAAAAAAAAAEgAAAAsAAAAAAAAAA==",
+              "ViewState": "AQIAAIoAAAAAAAAAAAAowAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-18T17:38:58.976Z",
+              "WhenOpened": "2025-12-19T11:05:00.434Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "GameField.cs",
+              "DocumentMoniker": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\\u0422\u041F\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\Trenazhor\\GameField.cs",
+              "RelativeDocumentMoniker": "GameField.cs",
+              "ToolTip": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\\u0422\u041F\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\Trenazhor\\GameField.cs",
+              "RelativeToolTip": "GameField.cs",
+              "ViewState": "AQIAAJgBAAAAAAAAAAAiwKgBAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-19T10:15:37.626Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "StatisticsUser.cs",
-              "DocumentMoniker": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\StatisticsUser.cs",
+              "DocumentMoniker": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\\u0422\u041F\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\Trenazhor\\StatisticsUser.cs",
               "RelativeDocumentMoniker": "StatisticsUser.cs",
-              "ToolTip": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\StatisticsUser.cs",
+              "ToolTip": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\\u0422\u041F\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\Trenazhor\\StatisticsUser.cs",
               "RelativeToolTip": "StatisticsUser.cs",
-              "ViewState": "AgIAAM4BAAAAAAAAAAAIwOABAAABAAAAAAAAAA==",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABIAAABZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-18T17:36:36.059Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 2,
               "Title": "Form2.cs",
-              "DocumentMoniker": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\Form2.cs",
+              "DocumentMoniker": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\\u0422\u041F\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\Trenazhor\\Form2.cs",
               "RelativeDocumentMoniker": "Form2.cs",
-              "ToolTip": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\Form2.cs",
+              "ToolTip": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\\u0422\u041F\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\Trenazhor\\Form2.cs",
               "RelativeToolTip": "Form2.cs",
-              "ViewState": "AgIAACIAAAAAAAAAAADwvywAAAAJAAAAAAAAAA==",
+              "ViewState": "AQIAAGoAAAAAAAAAAAAgwH4AAABdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-18T15:53:28.169Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 6,
               "Title": "Form2.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\Form2.cs",
+              "DocumentMoniker": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\\u0422\u041F\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\Trenazhor\\Form2.cs",
               "RelativeDocumentMoniker": "Form2.cs",
-              "ToolTip": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\Form2.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "ToolTip": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\\u0422\u041F\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\Trenazhor\\Form2.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "RelativeToolTip": "Form2.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-18T15:53:24.748Z",
@@ -227,24 +130,24 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 7,
               "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\Form1.cs",
+              "DocumentMoniker": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\\u0422\u041F\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\Trenazhor\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\Form1.cs",
+              "ToolTip": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\\u0422\u041F\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\Trenazhor\\Form1.cs",
               "RelativeToolTip": "Form1.cs",
-              "ViewState": "AgIAANQAAAAAAAAAAADwv+oAAAABAAAAAAAAAA==",
+              "ViewState": "AQIAAD8AAAAAAAAAAAAMwEwAAABAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-18T15:13:18.755Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 8,
               "Title": "Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\Form1.cs",
+              "DocumentMoniker": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\\u0422\u041F\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\Trenazhor\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "ToolTip": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\\u0422\u041F\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\Trenazhor\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "RelativeToolTip": "Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-18T15:13:16.606Z",
@@ -252,82 +155,36 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Registration.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\Registration.cs",
-              "RelativeDocumentMoniker": "Registration.cs",
-              "ToolTip": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\Registration.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "Registration.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-18T15:12:50.727Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "StatisticsUser.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\StatisticsUser.cs",
-              "RelativeDocumentMoniker": "StatisticsUser.cs",
-              "ToolTip": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\StatisticsUser.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "StatisticsUser.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-18T15:12:44.756Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
               "Title": "GameField.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\GameField.cs",
+              "DocumentMoniker": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\\u0422\u041F\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\Trenazhor\\GameField.cs",
               "RelativeDocumentMoniker": "GameField.cs",
-              "ToolTip": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\GameField.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "ToolTip": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\\u0422\u041F\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\Trenazhor\\GameField.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "RelativeToolTip": "GameField.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-18T15:12:23.039Z"
+              "WhenOpened": "2025-12-18T15:12:23.039Z",
+              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "Open.cs",
-              "DocumentMoniker": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\Open.cs",
-              "RelativeDocumentMoniker": "Open.cs",
-              "ToolTip": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\Open.cs",
-              "RelativeToolTip": "Open.cs",
-              "ViewState": "AgIAAFIAAAAAAAAAAAAkwFUAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-17T14:41:34.077Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "Open.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\Open.cs",
-              "RelativeDocumentMoniker": "Open.cs",
-              "ToolTip": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\Open.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "Open.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-17T14:41:31.622Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 5,
               "Title": "StatisticsAdmin.cs",
-              "DocumentMoniker": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\StatisticsAdmin.cs",
+              "DocumentMoniker": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\\u0422\u041F\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\Trenazhor\\StatisticsAdmin.cs",
               "RelativeDocumentMoniker": "StatisticsAdmin.cs",
-              "ToolTip": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\StatisticsAdmin.cs",
+              "ToolTip": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\\u0422\u041F\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\Trenazhor\\StatisticsAdmin.cs",
               "RelativeToolTip": "StatisticsAdmin.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAB9AAAAAAAAAA==",
+              "ViewState": "AQIAAI8CAAAAAAAAAAAQwBEAAABjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-17T13:00:03.616Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 9,
               "Title": "StatisticsAdmin.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\StatisticsAdmin.cs",
+              "DocumentMoniker": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\\u0422\u041F\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\Trenazhor\\StatisticsAdmin.cs",
               "RelativeDocumentMoniker": "StatisticsAdmin.cs",
-              "ToolTip": "C:\\Users\\krend\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0423\u0447\u0451\u0431\u0430\\\u041B\u0430\u0431\u044B\\\u0442\u043F\\Keyboard_trainer\\Trenazhor\\StatisticsAdmin.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "ToolTip": "C:\\Users\\\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F\\Desktop\\\u0422\u041F\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\Trenazhor\\StatisticsAdmin.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "RelativeToolTip": "StatisticsAdmin.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-17T12:59:58.544Z",

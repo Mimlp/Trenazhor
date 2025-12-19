@@ -13,7 +13,7 @@ namespace KeyboardTrainer
 {
     public partial class ListUsers : Form
     {
-        private string connectionString = "Host=localhost;Port=5432;Username=postgres;Password=Krendel25;Database=Trenazhor";
+        private string connectionString = "Host=localhost;Port=5432;Username=postgres;Password=root;Database=Trenazhor";
 
         public ListUsers()
         {

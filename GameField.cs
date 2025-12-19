@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -36,16 +37,25 @@ namespace KeyboardTrainer
         private bool timerStarted = false;
         private DateTime lastKeyPressTime;
 
+        private bool isPaused = false;
+        private DateTime pauseStart;
+        private TimeSpan maxTime;
 
-        public GameField(string text, int maxErrors, int minPressTime, int maxPressTime)
+        private int userId = UserSession.UserId;
+        private int exerciseId;
+        private readonly string connString = "Host=localhost;Port=5432;Username=postgres;Password=root;Database=Trenazhor";
+
+
+        public GameField(int exerciseId, string text, int maxErrors, int minPressTime, int maxPressTime)
         {
             InitializeComponent();
             InitializeGame();
 
+            this.exerciseId = exerciseId;
             this.sourceText = text;
             this.maxErrorsAllowed = maxErrors;
             this.minPressTime = minPressTime;
-            this.maxPressTime = maxPressTime;
+            this.maxTime = TimeSpan.FromMilliseconds(maxPressTime * sourceText.Length);
 
             UpdateLabels();
 
@@ -103,6 +113,9 @@ namespace KeyboardTrainer
 
         private void GameField_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (isPaused)
+                return;
+
             if (currentPosition >= sourceText.Length)
                 return;
 
@@ -130,29 +143,61 @@ namespace KeyboardTrainer
                 {
                     cursorTimer.Stop();
                     exerciseTimer.Stop();
-                    MessageBox.Show($"Слишком быстрое нажатие ({pressTimeMs})!\n" +
-                                   "Упражнение завершено.", "Внимание",
-                                   MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    //Добавить выход из упражнения и кнопку заново
+                    DialogResult result = MessageBox.Show(
+                        $"Слишком быстрое нажатие ({pressTimeMs:F0} мс)!\n" +
+                        "Упражнение завершено.\n\n" +
+                        "Хотите начать заново?",
+                        "Внимание",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Warning);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        // Кнопка "Заново"
+                        RestartExercise();
+                    }
+                    else
+                    {
+                        // Кнопка "Выйти"
+                        SaveSessionAndExit();
+                    }
+                    return;
                 }
-                else if (maxPressTime > 0 && pressTimeMs > maxPressTime)
+                if (elapsedTime > maxTime)
                 {
                     cursorTimer.Stop();
                     exerciseTimer.Stop();
-                    MessageBox.Show($"Слишком медленное нажатие ({pressTimeMs})!\n" +
-                                   "Упражнение завершено.", "Внимание",
-                                   MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    //Добавить выход из упражнения и кнопку заново
+
+                    string timeFormatted = $"{(int)maxTime.TotalMinutes:00}:{(int)maxTime.TotalSeconds % 60:00}";
+                    string currentTimeFormatted = $"{(int)elapsedTime.TotalMinutes:00}:{(int)elapsedTime.TotalSeconds % 60:00}";
+
+                    DialogResult result = MessageBox.Show(
+                        $"Превышено максимальное время выполнения!\n\n" +
+                        $"Затрачено: {currentTimeFormatted}\n" +
+                        $"Лимит: {timeFormatted}\n" +
+                        $"Макс. время на символ: {maxPressTime} мс\n" +
+                        $"Символов: {sourceText.Length}\n\n" +
+                        "Хотите начать заново?",
+                        "Время вышло!",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Warning);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        RestartExercise();
+                    }
+                    else
+                    {
+                        SaveSessionAndExit();
+                    }
+                    return;
                 }
             }
 
             if (char.ToLower(e.KeyChar) == char.ToLower(expected))
             {
                 currentPosition++;
-                averageTime += (pressTimeMs / 1000);
-
-                // Пересчитываем среднюю скорость
-                averageSpeed = (currentPosition + 1) / averageTime;
+                averageSpeed = (currentPosition / elapsedTime.TotalSeconds) * 60;
                 err = false;
                 lastKeyPressTime = currentPressTime;
             }
@@ -167,10 +212,24 @@ namespace KeyboardTrainer
             {
                 cursorTimer.Stop();
                 exerciseTimer.Stop();
-                MessageBox.Show($"Превышено максимальное количество ошибок ({maxErrorsAllowed})!\n" +
-                               "Упражнение завершено.", "Внимание",
-                               MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //Добавить выход из упражнения и кнопку заново
+                DialogResult result = MessageBox.Show(
+                    $"Превышено максимальное количество ошибок ({maxErrorsAllowed})!\n" +
+                    "Упражнение завершено.\n\n" +
+                    "Хотите начать заново?",
+                    "Внимание",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    // Кнопка "Заново"
+                    RestartExercise();
+                }
+                else
+                {
+                    // Кнопка "Выйти"
+                    SaveSessionAndExit();
+                }
                 return;
             }
 
@@ -189,46 +248,165 @@ namespace KeyboardTrainer
 
                 double accuracy = 100.0 * (sourceText.Length - errorCount) / sourceText.Length;
 
-                string timeFormatted = $"{(int)elapsedTime.TotalMinutes:00}:{(int)elapsedTime.TotalSeconds % 60:00}.{elapsedTime.Milliseconds / 100}";
+                averageSpeed = (currentPosition / elapsedTime.TotalSeconds) * 60;
 
-                MessageBox.Show($"Упражнение завершено!\n\n" +
+                string timeFormatted = $"{(int)elapsedTime.TotalMinutes:00}:{(int)elapsedTime.TotalSeconds % 60:00}";
+
+                DialogResult result = MessageBox.Show($"Упражнение завершено!\n\n" +
                                $"Время: {timeFormatted}\n" +
                                $"Ошибок: {errorCount}/{maxErrorsAllowed}\n" +
                                $"Точность: {accuracy:F1}%\n" +
-                               $"Статус: {(errorCount <= maxErrorsAllowed ? "УСПЕХ" : "НЕУДАЧА")}",
+                               $"Скорость : {averageSpeed:F0}сим/мин\n"+
+                               "Хотите начать заново ?",
                                "Результат",
-                               MessageBoxButtons.OK,
-                               errorCount <= maxErrorsAllowed ? MessageBoxIcon.Information : MessageBoxIcon.Warning);
+                               MessageBoxButtons.YesNo,
+                               MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                {
+                    // Кнопка "Заново"
+                    RestartExercise();
+                }
+                else
+                {
+                    // Кнопка "Выйти"
+                    SaveSessionAndExit();
+                }
 
             }
         }
 
-        private bool CheckPressTime(DateTime pressTime)
+        //Перезапуск упражнения
+        private void RestartExercise()
         {
-            if (currentPosition == 0) return true; // Первая буква - нет предыдущей для сравнения
+            SaveGameSession();
 
-            TimeSpan timeSinceLastPress = pressTime - lastKeyPressTime;
-            int pressTimeMs = (int)timeSinceLastPress.TotalMilliseconds;
+            currentPosition = 0;
+            errorCount = 0;
+            averageSpeed = 0;
+            averageTime = 0;
+            elapsedTime = TimeSpan.Zero;
+            lastKeyPressTime = DateTime.MinValue;
 
-            // Проверяем ограничения
-            if (minPressTime > 0 && pressTimeMs < minPressTime)
-            {
-                return false; // Слишком быстро
-            }
+            err = false;
+            timerStarted = false;
 
-            if (maxPressTime > 0 && pressTimeMs > maxPressTime)
-            {
-                return false; // Слишком медленно
-            }
+            cursorTimer.Stop();
+            exerciseTimer.Stop();
 
-            return true;
+            cursorTimer.Start();
+
+            UpdateLabels();
+            UpdateTimeLabel();
+            pnlTextContainer.Invalidate();
+
+            this.Focus();
         }
 
+        //Метод для сохранения сессии и выхода
+        private void SaveSessionAndExit()
+        {
+            // Сохраняем текущую сессию
+            SaveGameSession();
+
+            // Возвращаемся в меню
+            Form2 ex = new Form2();
+            ex.FormClosed += (s, args) => this.Close();
+            ex.Show();
+            this.Hide();
+        }
+
+        // сохранение игровой сессии в БД
+        private void SaveGameSession()
+        {
+            try
+            {
+                using (var conn = new NpgsqlConnection(connString))
+                {
+                    conn.Open();
+
+                    string sql = @"
+                    INSERT INTO game_session 
+                    (date_completed, typing_speed, error_count, error_percent, user_id, exercise_id, time_spent)
+                    VALUES (@date_completed, @typing_speed, @error_count, @error_percent, @user_id, @exercise_id, @time_spent)";
+
+                    using (var cmd = new NpgsqlCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("date_completed", DateTime.Now);
+                        cmd.Parameters.AddWithValue("typing_speed", averageSpeed);
+                        cmd.Parameters.AddWithValue("error_count", errorCount);
+                        cmd.Parameters.AddWithValue("error_percent", 100.0 * errorCount / sourceText.Length);
+                        cmd.Parameters.AddWithValue("user_id", userId);
+                        cmd.Parameters.AddWithValue("exercise_id", exerciseId);
+                        cmd.Parameters.AddWithValue("time_spent", (int)elapsedTime.TotalSeconds);
+
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ошибка сохранения сессии: " + ex.Message);
+            }
+        }
+
+        // Пауза
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if(isPaused) return;
+
+            // Фиксируем момент начала паузы
+            DateTime pauseStartTime = DateTime.Now;
+
+            cursorTimer.Stop();
+            exerciseTimer.Stop();
+            isPaused = true;
+
+            DialogResult result = MessageBox.Show(
+                "Упражнение приостановлено.\n\nНажмите OK для продолжения.",
+                "Пауза",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+
+            if (result == DialogResult.OK)
+            {
+                // Сколько времени длилась пауза
+                TimeSpan pauseDuration = DateTime.Now - pauseStartTime;
+
+                // КОРРЕКТИРУЕМ ВСЕ ВРЕМЕННЫЕ МЕТКИ
+                if (timerStarted)
+                {
+                    startTime = startTime.Add(pauseDuration);
+                    lastKeyPressTime = lastKeyPressTime.Add(pauseDuration);
+
+                }
+
+                isPaused = false;
+                cursorTimer.Start();
+                if (timerStarted)
+                {
+                    exerciseTimer.Start();
+                }
+                this.Focus();
+            }
+
+
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            Form2 ex = new Form2();
+            ex.FormClosed += (s, args) => this.Close();
+            ex.Show();
+            this.Hide();
+        }
         private void UpdateLabels()
         {
             label2.Text = $"Ошибок: {errorCount}/{maxErrorsAllowed}";
             label1.Text = $"Прогресс: {currentPosition}/{sourceText.Length}";
-            label4.Text = $"Скорость: {averageSpeed:F1} сим/мс";
+            label4.Text = $"Скорость: {averageSpeed:F0} сим/мин";
 
             // Меняем цвет в зависимости от количества ошибок
             if (errorCount > maxErrorsAllowed)
@@ -245,9 +423,9 @@ namespace KeyboardTrainer
             int totalSeconds = (int)elapsedTime.TotalSeconds;
             int minutes = totalSeconds / 60;
             int seconds = totalSeconds % 60;
-            int tenths = (int)(elapsedTime.Milliseconds / 100);
 
-            label3.Text = $"Время: {minutes:00}:{seconds:00}.{tenths}";
+            label3.Text = $"Время: {minutes:00}:{seconds:00}";
+            
         }
 
         private void Panel_Paint(object sender, PaintEventArgs e)
@@ -301,13 +479,7 @@ namespace KeyboardTrainer
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Form2 ex = new Form2();
-            ex.FormClosed += (s, args) => this.Close();
-            ex.Show();
-            this.Hide();
-        }
+        
 
         private void InitializeLegend()
         {
@@ -540,5 +712,6 @@ namespace KeyboardTrainer
             }
         }
 
+        
     }
 }
