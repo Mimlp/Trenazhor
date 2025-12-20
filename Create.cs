@@ -193,6 +193,10 @@ namespace KeyboardTrainer
                 {
                     MessageBox.Show("Введите длину упражнения");
                 }
+                else if (textBox1.Text.Length > 20)
+                {
+                    MessageBox.Show("Длина упражнения должна быть меньше 20 символов");
+                }
                 else
                 {
                     string ex_name = textBox1.Text;
@@ -445,6 +449,11 @@ namespace KeyboardTrainer
             ea.FormClosed += (s, args) => this.Close();
             ea.Show();
             this.Hide();
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+            textBox3.Text = richTextBox1.Text.Length.ToString();
         }
     }
 }
