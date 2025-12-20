@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Create));
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -39,28 +40,28 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(364, 46);
+            this.textBox1.Location = new System.Drawing.Point(410, 58);
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(373, 22);
+            this.textBox1.Size = new System.Drawing.Size(419, 26);
             this.textBox1.TabIndex = 0;
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(364, 134);
+            this.textBox3.Location = new System.Drawing.Point(410, 168);
             this.textBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(373, 22);
+            this.textBox3.Size = new System.Drawing.Size(419, 26);
             this.textBox3.TabIndex = 2;
             // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.BackColor = System.Drawing.Color.Transparent;
-            this.checkBox1.Location = new System.Drawing.Point(364, 176);
+            this.checkBox1.Location = new System.Drawing.Point(410, 220);
             this.checkBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(145, 20);
+            this.checkBox1.Size = new System.Drawing.Size(167, 24);
             this.checkBox1.TabIndex = 3;
             this.checkBox1.Text = "Создать вручную";
             this.checkBox1.UseVisualStyleBackColor = false;
@@ -71,10 +72,10 @@
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(137)))), ((int)(((byte)(41)))));
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(20, 478);
+            this.button1.Location = new System.Drawing.Point(22, 598);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(163, 36);
+            this.button1.Size = new System.Drawing.Size(183, 45);
             this.button1.TabIndex = 4;
             this.button1.Text = "Отменить";
             this.button1.UseVisualStyleBackColor = false;
@@ -85,10 +86,10 @@
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(137)))), ((int)(((byte)(41)))));
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Location = new System.Drawing.Point(466, 478);
+            this.button2.Location = new System.Drawing.Point(524, 598);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(163, 36);
+            this.button2.Size = new System.Drawing.Size(183, 45);
             this.button2.TabIndex = 5;
             this.button2.Text = "Сохранить";
             this.button2.UseVisualStyleBackColor = false;
@@ -97,27 +98,27 @@
             // richTextBox1
             // 
             this.richTextBox1.BackColor = System.Drawing.Color.PapayaWhip;
-            this.richTextBox1.Location = new System.Drawing.Point(156, 227);
+            this.richTextBox1.Location = new System.Drawing.Point(176, 284);
             this.richTextBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(818, 213);
+            this.richTextBox1.Size = new System.Drawing.Size(920, 265);
             this.richTextBox1.TabIndex = 6;
             this.richTextBox1.Text = "";
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(364, 89);
+            this.comboBox1.Location = new System.Drawing.Point(410, 111);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(373, 24);
+            this.comboBox1.Size = new System.Drawing.Size(419, 28);
             this.comboBox1.TabIndex = 7;
             // 
             // Create
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1099, 537);
+            this.ClientSize = new System.Drawing.Size(1236, 671);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.button2);
@@ -125,9 +126,10 @@
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Create";
-            this.Text = "Create";
+            this.Text = "Создание и редактирование упражнения";
             this.ResumeLayout(false);
             this.PerformLayout();
 
