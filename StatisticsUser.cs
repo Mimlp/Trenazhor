@@ -16,7 +16,7 @@ namespace KeyboardTrainer
     public partial class StatisticsUser : Form
     {
         private string connectionString =
-            "Host=localhost;Port=5432;Username=postgres;Password=root;Database=Trenazhor";
+            "Host=localhost;Port=5432;Username=postgres;Password=Krendel25;Database=Trenazhor";
         private List<double> userAccuracyData = new List<double>();
         private List<double> userSpeedData = new List<double>();
 
@@ -42,10 +42,47 @@ namespace KeyboardTrainer
                 return;
             }
 
-            InitializeChart(); // ПЕРЕНЕСЕНО: инициализируем график ПЕРВЫМ делом
+            InitializeChart();
             InitializeGrid();
             LoadUserData();
-            checkBox1.Checked = true;
+
+            // Устанавливаем чекбоксы только если есть данные
+            if (userAccuracyData.Count > 0)
+            {
+                checkBox1.Checked = true;
+                checkBox1_CheckedChanged(null, EventArgs.Empty);
+            }
+            else if (userSpeedData.Count > 0)
+            {
+                checkBox2.Checked = true;
+                checkBox2_CheckedChanged(null, EventArgs.Empty);
+            }
+            else
+            {
+                // Если нет данных, показываем сообщение
+                ShowNoDataMessage();
+            }
+        }
+
+        private void ShowNoDataMessage()
+        {
+            chart1.Series.Clear();
+
+            // Добавляем текстовую аннотацию на график
+            TextAnnotation annotation = new TextAnnotation();
+            annotation.Text = "Нет данных для отображения";
+            annotation.Font = new Font("Arial", 12, FontStyle.Bold);
+            annotation.ForeColor = Color.White;
+            annotation.Alignment = ContentAlignment.MiddleCenter;
+            annotation.X = 50;
+            annotation.Y = 50;
+            annotation.Width = 100;
+            annotation.Height = 30;
+            annotation.IsSizeAlwaysRelative = false;
+
+            if (chart1.Annotations.Count == 0)
+                chart1.Annotations.Add(annotation);
+
             chart1.Invalidate();
         }
 
@@ -189,12 +226,6 @@ namespace KeyboardTrainer
 
                 // Вычисляем статистику
                 CalculateUserStatistics();
-
-                // Строим график точности по умолчанию
-                if (userAccuracyData.Count > 0)
-                {
-                    DrawGraph(userAccuracyData.ToArray());
-                }
             }
             catch (Exception ex)
             {
@@ -361,11 +392,19 @@ namespace KeyboardTrainer
             try
             {
                 chart1.Series.Clear();
+                chart1.Annotations.Clear();
+
+                // Проверяем, есть ли данные для построения графика
+                if (values == null || values.Length == 0)
+                {
+                    ShowNoDataMessage();
+                    return;
+                }
 
                 // Проверяем, существует ли область "Main"
                 if (chart1.ChartAreas.Count == 0)
                 {
-                    InitializeChart(); // Если нет, инициализируем заново
+                    InitializeChart();
                 }
 
                 var area = chart1.ChartAreas["Main"];
@@ -394,15 +433,24 @@ namespace KeyboardTrainer
                 if (values.Length > 0)
                 {
                     area.AxisX.Minimum = 1;
-                    area.AxisX.Maximum = values.Length;
+                    area.AxisX.Maximum = Math.Max(values.Length, 2); // Минимум 2 для отображения одной точки
                     area.AxisX.Interval = 1;
 
                     double minValue = values.Min();
                     double maxValue = values.Max();
                     double padding = (maxValue - minValue) * 0.1;
 
-                    area.AxisY.Minimum = Math.Max(0, minValue - padding);
-                    area.AxisY.Maximum = maxValue + padding;
+                    // Если все значения одинаковы (например, всего одна запись или все значения равны)
+                    if (Math.Abs(maxValue - minValue) < 0.0001)
+                    {
+                        area.AxisY.Minimum = Math.Max(0, minValue - 10); // Добавляем небольшой отступ
+                        area.AxisY.Maximum = maxValue + 10;
+                    }
+                    else
+                    {
+                        area.AxisY.Minimum = Math.Max(0, minValue - padding);
+                        area.AxisY.Maximum = maxValue + padding;
+                    }
                 }
 
                 area.RecalculateAxesScale();
@@ -425,8 +473,7 @@ namespace KeyboardTrainer
                 }
                 else
                 {
-                    MessageBox.Show("Нет данных о точности для построения графика", "Информация",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ShowNoDataMessage();
                 }
             }
         }
@@ -442,8 +489,7 @@ namespace KeyboardTrainer
                 }
                 else
                 {
-                    MessageBox.Show("Нет данных о скорости для построения графика", "Информация",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ShowNoDataMessage();
                 }
             }
         }
@@ -451,6 +497,20 @@ namespace KeyboardTrainer
         private void buttonRefresh_Click(object sender, EventArgs e)
         {
             LoadUserData();
+
+            // Обновляем график в зависимости от выбранного чекбокса
+            if (checkBox1.Checked && userAccuracyData.Count > 0)
+            {
+                DrawGraph(userAccuracyData.ToArray());
+            }
+            else if (checkBox2.Checked && userSpeedData.Count > 0)
+            {
+                DrawGraph(userSpeedData.ToArray());
+            }
+            else
+            {
+                ShowNoDataMessage();
+            }
         }
 
         private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

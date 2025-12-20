@@ -44,7 +44,7 @@ namespace KeyboardTrainer
             label2.Visible = false;
         }
 
-        private readonly string connString = "Host=localhost;Port=5432;Username=postgres;Password=root;Database=Trenazhor";
+        private readonly string connString = "Host=localhost;Port=5432;Username=postgres;Password=Krendel25;Database=Trenazhor";
         private readonly string[] levelButtons = new[] { "Новичок", "Ученик", "Мастер клавиш", "Эксперт скорости", "Ниндзя" };
         private string currentSelectedLevel;
         private int currentLevelMaxErrors = 10;
@@ -220,7 +220,9 @@ namespace KeyboardTrainer
         private void label1_Click(object sender, EventArgs e)
         {
             Form4 mainMenu = new Form4();
+            mainMenu.FormClosed += (s, args) => this.Close();
             mainMenu.Show();
+            this.Hide();
         }
 
         private void ExercisesPanel_SizeChanged(object sender, EventArgs e)

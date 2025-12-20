@@ -15,16 +15,18 @@ namespace KeyboardTrainer
 {
     public partial class StatisticsAdmin : Form
     {
-        private string connectionString = "Host=localhost;Port=5432;Username=postgres;Password=root;Database=Trenazhor";
+        private string connectionString = "Host=localhost;Port=5432;Username=postgres;Password=Krendel25;Database=Trenazhor";
         private bool isUsersMode = true;
+        private List<double> userAccuracyData = new List<double>();
+        private List<double> exerciseAccuracyData = new List<double>();
 
         public StatisticsAdmin()
         {
             InitializeComponent();
-            checkBox1.Checked = true;
             InitializeChart();
+            checkBox1.Checked = true;
             LoadDataForUsers();
-            chart1.Invalidate();
+            SetPlaceholder(textBox1, "Поиск по логину");
         }
 
         protected override void OnPaintBackground(PaintEventArgs e)
@@ -255,16 +257,31 @@ namespace KeyboardTrainer
                         adapter.Fill(dataTable);
 
                         dataGridView1.DataSource = dataTable;
+
+                        // Собираем данные для графика точности
+                        userAccuracyData.Clear();
+                        foreach (DataRow row in dataTable.Rows)
+                        {
+                            if (row["accuracy"] != DBNull.Value &&
+                                double.TryParse(row["accuracy"].ToString(), out double accuracy))
+                            {
+                                userAccuracyData.Add(accuracy);
+                            }
+                        }
                     }
                 }
 
                 // Вычисляем статистику для панели информации
                 CalculateUserStatistics();
+
+                // Обновляем график
+                UpdateGraph();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Ошибка загрузки данных: {ex.Message}", "Ошибка",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowNoDataMessage("Ошибка загрузки данных");
             }
         }
 
@@ -304,16 +321,32 @@ namespace KeyboardTrainer
                         adapter.Fill(dataTable);
 
                         dataGridView1.DataSource = dataTable;
+
+                        // Собираем данные для графика точности
+                        exerciseAccuracyData.Clear();
+                        foreach (DataRow row in dataTable.Rows)
+                        {
+                            if (row["avg_accuracy"] != DBNull.Value &&
+                                row["avg_accuracy"].ToString() != "" &&
+                                double.TryParse(row["avg_accuracy"].ToString(), out double accuracy))
+                            {
+                                exerciseAccuracyData.Add(accuracy);
+                            }
+                        }
                     }
                 }
 
                 // Вычисляем статистику для панели информации
                 CalculateExerciseStatistics();
+
+                // Обновляем график
+                UpdateGraph();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Ошибка загрузки данных: {ex.Message}", "Ошибка",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowNoDataMessage("Ошибка загрузки данных");
             }
         }
 
@@ -474,9 +507,6 @@ namespace KeyboardTrainer
             }
         }
 
-        double[] accuracyDataUser = { 30, 52, 83, 61, 95, 96, 94 };
-        double[] accuracyDataEx = { 110, 260, 470, 280, 290, 300, 310 };
-
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox1.Checked)
@@ -487,8 +517,6 @@ namespace KeyboardTrainer
                 InitializeGridForUsers();
                 LoadDataForUsers();
                 label3.Text = "Изменение точности по мере обучения";
-                InitializeChart();
-                DrawGraph(accuracyDataUser);
             }
         }
 
@@ -502,8 +530,6 @@ namespace KeyboardTrainer
                 InitializeGridForExercises();
                 LoadDataForExercises();
                 label3.Text = "Изменение точности по всем пользователям для выбранного упражнения";
-                InitializeChart();
-                DrawGraph(accuracyDataEx);
             }
         }
 
@@ -544,29 +570,48 @@ namespace KeyboardTrainer
 
         private void SetPlaceholder(TextBox box, string placeholder)
         {
-            if (string.IsNullOrWhiteSpace(box.Text) || box.Text == placeholder)
+            // Сохраняем текущий текст, если он не placeholder
+            string currentText = box.ForeColor == Color.Gray ? "" : box.Text;
+
+            // Удаляем все существующие обработчики
+            box.GotFocus -= TextBox_GotFocus;
+            box.LostFocus -= TextBox_LostFocus;
+
+            // Добавляем новые обработчики
+            box.GotFocus += TextBox_GotFocus;
+            box.LostFocus += TextBox_LostFocus;
+
+            // Устанавливаем текст и цвет
+            if (string.IsNullOrWhiteSpace(currentText))
             {
-                box.ForeColor = Color.Gray;
                 box.Text = placeholder;
+                box.ForeColor = Color.Gray;
             }
-
-            box.GotFocus += (s, e) =>
+            else
             {
-                if (box.Text == placeholder)
-                {
-                    box.Text = "";
-                    box.ForeColor = Color.Black;
-                }
-            };
+                box.Text = currentText;
+                box.ForeColor = Color.Black;
+            }
+        }
 
-            box.LostFocus += (s, e) =>
+        private void TextBox_GotFocus(object sender, EventArgs e)
+        {
+            TextBox box = sender as TextBox;
+            if (box.ForeColor == Color.Gray)
             {
-                if (string.IsNullOrWhiteSpace(box.Text))
-                {
-                    box.Text = placeholder;
-                    box.ForeColor = Color.Gray;
-                }
-            };
+                box.Text = "";
+                box.ForeColor = Color.Black;
+            }
+        }
+
+        private void TextBox_LostFocus(object sender, EventArgs e)
+        {
+            TextBox box = sender as TextBox;
+            if (string.IsNullOrWhiteSpace(box.Text))
+            {
+                box.Text = isUsersMode ? "Поиск по логину" : "Поиск по упражнению";
+                box.ForeColor = Color.Gray;
+            }
         }
 
         private void InitializeChart()
@@ -598,28 +643,138 @@ namespace KeyboardTrainer
             chart1.ChartAreas[0].BorderColor = Color.FromArgb(90, Color.White);
         }
 
-        private void DrawGraph(double[] values)
+        private void UpdateGraph()
+        {
+            if (isUsersMode)
+            {
+                if (userAccuracyData.Count > 0)
+                {
+                    DrawGraph(userAccuracyData.ToArray(), "Точность пользователей по сессиям");
+                }
+                else
+                {
+                    ShowNoDataMessage("Нет данных о точности пользователей");
+                }
+            }
+            else
+            {
+                if (exerciseAccuracyData.Count > 0)
+                {
+                    DrawGraph(exerciseAccuracyData.ToArray(), "Средняя точность по упражнениям");
+                }
+                else
+                {
+                    ShowNoDataMessage("Нет данных о точности по упражнениям");
+                }
+            }
+        }
+
+        private void ShowNoDataMessage(string message)
         {
             chart1.Series.Clear();
-            var area = chart1.ChartAreas["Main"];
-            area.AxisX.ScaleView.ZoomReset();
-            area.AxisY.ScaleView.ZoomReset();
+            chart1.Annotations.Clear();
 
-            var series = new Series
-            {
-                ChartType = SeriesChartType.Line,
-                Color = Color.Black,
-                BorderWidth = 3,
-                ChartArea = "Main"
-            };
+            // Добавляем текстовую аннотацию на график
+            TextAnnotation annotation = new TextAnnotation();
+            annotation.Text = message;
+            annotation.Font = new Font("Arial", 10, FontStyle.Bold);
+            annotation.ForeColor = Color.White;
+            annotation.Alignment = ContentAlignment.MiddleCenter;
+            annotation.X = 50;
+            annotation.Y = 50;
+            annotation.Width = 100;
+            annotation.Height = 30;
+            annotation.IsSizeAlwaysRelative = false;
 
-            for (int i = 0; i < values.Length; i++)
+            if (chart1.Annotations.Count == 0)
+                chart1.Annotations.Add(annotation);
+
+            chart1.Invalidate();
+        }
+
+        private void DrawGraph(double[] values, string title = "")
+        {
+            try
             {
-                series.Points.AddXY(i + 1, values[i]);
+                chart1.Series.Clear();
+                chart1.Annotations.Clear();
+
+                // Проверяем, есть ли данные для построения графика
+                if (values == null || values.Length == 0)
+                {
+                    ShowNoDataMessage("Нет данных для построения графика");
+                    return;
+                }
+
+                // Проверяем, существует ли область "Main"
+                if (chart1.ChartAreas.Count == 0)
+                {
+                    InitializeChart();
+                }
+
+                var area = chart1.ChartAreas["Main"];
+                area.AxisX.ScaleView.ZoomReset();
+                area.AxisY.ScaleView.ZoomReset();
+
+                var series = new Series
+                {
+                    ChartType = SeriesChartType.Line,
+                    Color = Color.Black,
+                    BorderWidth = 3,
+                    ChartArea = "Main",
+                    MarkerStyle = MarkerStyle.Circle,
+                    MarkerSize = 8,
+                    MarkerColor = Color.Red
+                };
+
+                for (int i = 0; i < values.Length; i++)
+                {
+                    series.Points.AddXY(i + 1, values[i]);
+                }
+
+                chart1.Series.Add(series);
+
+                // Настраиваем оси
+                if (values.Length > 0)
+                {
+                    area.AxisX.Minimum = 1;
+                    area.AxisX.Maximum = Math.Max(values.Length, 2); // Минимум 2 для отображения одной точки
+                    area.AxisX.Interval = Math.Max(1, values.Length / 10); // Автоматический интервал
+
+                    double minValue = values.Min();
+                    double maxValue = values.Max();
+                    double padding = (maxValue - minValue) * 0.1;
+
+                    // Если все значения одинаковы (например, всего одна запись или все значения равны)
+                    if (Math.Abs(maxValue - minValue) < 0.0001)
+                    {
+                        area.AxisY.Minimum = Math.Max(0, minValue - 10);
+                        area.AxisY.Maximum = maxValue + 10;
+                    }
+                    else
+                    {
+                        area.AxisY.Minimum = Math.Max(0, minValue - padding);
+                        area.AxisY.Maximum = maxValue + padding;
+                    }
+                }
+
+                // Устанавливаем заголовок графика
+                if (!string.IsNullOrEmpty(title))
+                {
+                    chart1.Titles.Clear();
+                    var titleElement = new Title(title);
+                    titleElement.ForeColor = Color.White;
+                    titleElement.Font = new Font("Arial", 10, FontStyle.Bold);
+                    chart1.Titles.Add(titleElement);
+                }
+
+                area.RecalculateAxesScale();
             }
-
-            chart1.Series.Add(series);
-            area.RecalculateAxesScale();
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка построения графика: {ex.Message}", "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         // Обработчик поиска
