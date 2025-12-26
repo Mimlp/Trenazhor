@@ -15,7 +15,7 @@ namespace KeyboardTrainer
 {
     public partial class StatisticsAdmin : Form
     {
-        private string connectionString = "Host=localhost;Port=5432;Username=postgres;Password=Krendel25;Database=Trenazhor";
+        private string connectionString = "Host=localhost;Port=5432;Username=postgres;Password=root;Database=Trenazhor";
         private bool isUsersMode = true;
         private List<double> userAccuracyData = new List<double>();
         private List<double> exerciseAccuracyData = new List<double>();
@@ -825,6 +825,11 @@ namespace KeyboardTrainer
                     e.FormattingApplied = true;
                 }
             }
+        }
+
+        private void button_search_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

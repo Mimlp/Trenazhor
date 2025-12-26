@@ -43,7 +43,7 @@ namespace KeyboardTrainer
 
         private int userId = UserSession.UserId;
         private int exerciseId;
-        private readonly string connString = "Host=localhost;Port=5432;Username=postgres;Password=Krendel25;Database=Trenazhor";
+        private readonly string connString = "Host=localhost;Port=5432;Username=postgres;Password=root;Database=Trenazhor";
 
 
         public GameField(int exerciseId, string text, int maxErrors, int minPressTime, int maxPressTime)
