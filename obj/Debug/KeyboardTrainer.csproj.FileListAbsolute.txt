@@ -146,10 +146,6 @@ C:\Users\julia\Documents\GitHub\Trenaz\Trenazhor\obj\Debug\KeyboardTrainer.cspro
 C:\Users\julia\Documents\GitHub\Trenaz\Trenazhor\obj\Debug\KeyboardTrainer.exe.config
 C:\Users\julia\Documents\GitHub\Trenaz\Trenazhor\obj\Debug\KeyboardTrainer.Create.resources
 C:\Users\julia\Documents\GitHub\Trenaz\Trenazhor\obj\Debug\KeyboardTrainer.ExercisesAdmin.resources
-C:\Users\julia\Documents\GitHub\Trenaz\Trenazhor\obj\Debug\KeyboardTrainer.Form1.resources
-C:\Users\julia\Documents\GitHub\Trenaz\Trenazhor\obj\Debug\KeyboardTrainer.Form2.resources
-C:\Users\julia\Documents\GitHub\Trenaz\Trenazhor\obj\Debug\KeyboardTrainer.Form3.resources
-C:\Users\julia\Documents\GitHub\Trenaz\Trenazhor\obj\Debug\KeyboardTrainer.Form4.resources
 C:\Users\julia\Documents\GitHub\Trenaz\Trenazhor\obj\Debug\KeyboardTrainer.Properties.Resources.resources
 C:\Users\julia\Documents\GitHub\Trenaz\Trenazhor\obj\Debug\KeyboardTrainer.csproj.GenerateResource.cache
 C:\Users\julia\Documents\GitHub\Trenaz\Trenazhor\obj\Debug\KeyboardTrainer.csproj.CoreCompileInputs.cache
@@ -282,3 +278,7 @@ C:\Users\krend\OneDrive\Документы\Учёба\Лабы\тп\Keyboard_tra
 C:\Users\krend\OneDrive\Документы\Учёба\Лабы\тп\Keyboard_trainer\Trenazhor\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\krend\OneDrive\Документы\Учёба\Лабы\тп\Keyboard_trainer\Trenazhor\bin\Debug\System.ValueTuple.xml
 C:\Users\krend\OneDrive\Документы\Учёба\Лабы\тп\Keyboard_trainer\Trenazhor\obj\Debug\Keyboard.5292ABBC.Up2Date
+C:\Users\julia\Documents\GitHub\Trenaz\Trenazhor\obj\Debug\KeyboardTrainer.Authorization.resources
+C:\Users\julia\Documents\GitHub\Trenaz\Trenazhor\obj\Debug\KeyboardTrainer.ListTask.resources
+C:\Users\julia\Documents\GitHub\Trenaz\Trenazhor\obj\Debug\KeyboardTrainer.MainMenuAdm.resources
+C:\Users\julia\Documents\GitHub\Trenaz\Trenazhor\obj\Debug\KeyboardTrainer.MainMenuUsr.resources

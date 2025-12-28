@@ -23,7 +23,7 @@ namespace KeyboardTrainer
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Form1 f1 = new Form1();
+            Authorization f1 = new Authorization();
             f1.FormClosed += (s, args) => this.Close();
             f1.Show();
             this.Hide();

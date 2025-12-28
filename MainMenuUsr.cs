@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace KeyboardTrainer
 {
-    public partial class Form4 : Form
+    public partial class MainMenuUsr : Form
     {
-        public Form4()
+        public MainMenuUsr()
         {
             InitializeComponent();
 
@@ -102,7 +102,7 @@ namespace KeyboardTrainer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form2 exercises = new Form2();
+            ListTask exercises = new ListTask();
             exercises.FormClosed += (s, args) => this.Close();
             exercises.Show();
             this.Hide();
@@ -112,7 +112,7 @@ namespace KeyboardTrainer
         {
             // Выход - очищаем сессию
             UserSession.Clear();
-            Form1 form1 = new Form1();
+            Authorization form1 = new Authorization();
             form1.FormClosed += (s, args) => this.Close();
             form1.Show();
             this.Hide();

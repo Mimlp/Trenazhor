@@ -11,9 +11,9 @@ using Npgsql;
 
 namespace KeyboardTrainer
 {
-    public partial class Form2 : Form
+    public partial class ListTask : Form
     {
-        public Form2()
+        public ListTask()
         {
             InitializeComponent();
 
@@ -219,7 +219,7 @@ namespace KeyboardTrainer
 
         private void label1_Click(object sender, EventArgs e)
         {
-            Form4 mainMenu = new Form4();
+            MainMenuUsr mainMenu = new MainMenuUsr();
             mainMenu.FormClosed += (s, args) => this.Close();
             mainMenu.Show();
             this.Hide();

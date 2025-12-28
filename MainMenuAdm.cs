@@ -11,9 +11,9 @@ using System.Drawing.Drawing2D;
 
 namespace KeyboardTrainer
 {
-    public partial class Form3 : Form
+    public partial class MainMenuAdm : Form
     {
-        public Form3()
+        public MainMenuAdm()
         {
             InitializeComponent();
         }
@@ -42,7 +42,7 @@ namespace KeyboardTrainer
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Form1 regForm = new Form1();
+            Authorization regForm = new Authorization();
             regForm.FormClosed += (s, args) => this.Close();
             regForm.Show();
             this.Hide();

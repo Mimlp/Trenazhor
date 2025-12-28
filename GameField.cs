@@ -309,7 +309,7 @@ namespace KeyboardTrainer
             SaveGameSession();
 
             // Возвращаемся в меню
-            Form2 ex = new Form2();
+            ListTask ex = new ListTask();
             ex.FormClosed += (s, args) => this.Close();
             ex.Show();
             this.Hide();
@@ -397,7 +397,7 @@ namespace KeyboardTrainer
         private void button2_Click(object sender, EventArgs e)
         {
 
-            Form2 ex = new Form2();
+            ListTask ex = new ListTask();
             ex.FormClosed += (s, args) => this.Close();
             ex.Show();
             this.Hide();

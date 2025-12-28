@@ -12,9 +12,9 @@ using Npgsql;
 
 namespace KeyboardTrainer
 {
-    public partial class Form1 : Form
+    public partial class Authorization : Form
     {
-        public Form1()
+        public Authorization()
         {
             InitializeComponent();
             SetPlaceholder(textBox1, "Логин");
@@ -144,7 +144,7 @@ namespace KeyboardTrainer
                             UserSession.SetUser(userId, login, "admin", blocked);
 
                             MessageBox.Show($"Добро пожаловать, администратор!");
-                            Form3 adminPanel = new Form3();
+                            MainMenuAdm adminPanel = new MainMenuAdm();
                             adminPanel.FormClosed += (s, args) => this.Close();
                             adminPanel.Show();
                             this.Hide();
@@ -201,7 +201,7 @@ namespace KeyboardTrainer
 
                             if (role.Equals("user", StringComparison.OrdinalIgnoreCase))
                             {
-                                Form4 uselForm = new Form4();
+                                MainMenuUsr uselForm = new MainMenuUsr();
                                 uselForm.FormClosed += (s, args) => this.Close();
                                 uselForm.Show();
                                 this.Hide();

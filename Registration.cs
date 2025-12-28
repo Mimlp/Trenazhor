@@ -175,7 +175,7 @@ namespace KeyboardTrainer
                                 MessageBox.Show("Пользователь успешно зарегистрирован!");
                                 textBox4.Text = "";
                                 textBox3.Text = "";
-                                Form4 uselForm = new Form4();
+                                MainMenuUsr uselForm = new MainMenuUsr();
                                 uselForm.FormClosed += (s, args) => this.Close();
                                 uselForm.Show();
                                 this.Hide();

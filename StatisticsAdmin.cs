@@ -46,7 +46,7 @@ namespace KeyboardTrainer
 
         private void label2_Click(object sender, EventArgs e)
         {
-            Form3 menForm = new Form3();
+            MainMenuAdm menForm = new MainMenuAdm();
             menForm.FormClosed += (s, args) => this.Close();
             menForm.Show();
             this.Hide();
