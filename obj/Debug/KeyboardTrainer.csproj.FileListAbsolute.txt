@@ -227,10 +227,6 @@ C:\Users\krend\OneDrive\Документы\Учёба\Лабы\тп\Keyboard_tra
 C:\Users\krend\OneDrive\Документы\Учёба\Лабы\тп\Keyboard_trainer\Trenazhor\obj\Debug\KeyboardTrainer.exe.config
 C:\Users\krend\OneDrive\Документы\Учёба\Лабы\тп\Keyboard_trainer\Trenazhor\obj\Debug\KeyboardTrainer.Create.resources
 C:\Users\krend\OneDrive\Документы\Учёба\Лабы\тп\Keyboard_trainer\Trenazhor\obj\Debug\KeyboardTrainer.ExercisesAdmin.resources
-C:\Users\krend\OneDrive\Документы\Учёба\Лабы\тп\Keyboard_trainer\Trenazhor\obj\Debug\KeyboardTrainer.Form1.resources
-C:\Users\krend\OneDrive\Документы\Учёба\Лабы\тп\Keyboard_trainer\Trenazhor\obj\Debug\KeyboardTrainer.Form2.resources
-C:\Users\krend\OneDrive\Документы\Учёба\Лабы\тп\Keyboard_trainer\Trenazhor\obj\Debug\KeyboardTrainer.Form3.resources
-C:\Users\krend\OneDrive\Документы\Учёба\Лабы\тп\Keyboard_trainer\Trenazhor\obj\Debug\KeyboardTrainer.Form4.resources
 C:\Users\krend\OneDrive\Документы\Учёба\Лабы\тп\Keyboard_trainer\Trenazhor\obj\Debug\KeyboardTrainer.GameField.resources
 C:\Users\krend\OneDrive\Документы\Учёба\Лабы\тп\Keyboard_trainer\Trenazhor\obj\Debug\KeyboardTrainer.ListUsers.resources
 C:\Users\krend\OneDrive\Документы\Учёба\Лабы\тп\Keyboard_trainer\Trenazhor\obj\Debug\KeyboardTrainer.Open.resources
@@ -282,3 +278,9 @@ C:\Users\julia\Documents\GitHub\Trenaz\Trenazhor\obj\Debug\KeyboardTrainer.Autho
 C:\Users\julia\Documents\GitHub\Trenaz\Trenazhor\obj\Debug\KeyboardTrainer.ListTask.resources
 C:\Users\julia\Documents\GitHub\Trenaz\Trenazhor\obj\Debug\KeyboardTrainer.MainMenuAdm.resources
 C:\Users\julia\Documents\GitHub\Trenaz\Trenazhor\obj\Debug\KeyboardTrainer.MainMenuUsr.resources
+C:\Users\krend\OneDrive\Документы\Учёба\Лабы\тп\Keyboard_trainer\Trenazhor\obj\Debug\KeyboardTrainer.Authorization.resources
+C:\Users\krend\OneDrive\Документы\Учёба\Лабы\тп\Keyboard_trainer\Trenazhor\obj\Debug\KeyboardTrainer.ListTask.resources
+C:\Users\krend\OneDrive\Документы\Учёба\Лабы\тп\Keyboard_trainer\Trenazhor\obj\Debug\KeyboardTrainer.MainMenuAdm.resources
+C:\Users\krend\OneDrive\Документы\Учёба\Лабы\тп\Keyboard_trainer\Trenazhor\obj\Debug\KeyboardTrainer.MainMenuUsr.resources
+C:\Users\krend\OneDrive\Документы\Учёба\Лабы\тп\Keyboard_trainer\Trenazhor\obj\Debug\KeyboardTrainer.Help.resources
+C:\Users\krend\OneDrive\Документы\Учёба\Лабы\тп\Keyboard_trainer\Trenazhor\bin\Debug\Resources\reference.html

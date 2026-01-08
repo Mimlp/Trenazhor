@@ -87,20 +87,8 @@ namespace KeyboardTrainer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(
-                "Лабораторный практикум по дисциплине\n" +
-                "Технологии программирования\n" +
-                "Тема: Клавиатурный тренажер\n" +
-                "Разработчики студенты группы 6402-090301D:\n" +
-                "           Кузнецова Ксения\n" +
-                "           Галкина Юлия\n" +
-                "           Герасимова Анастасия\n" +
-                "Руководитель: Оплачко Денис Сергеевич\n" +
-                "О системе",
-                "Информация о разработчиках",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information
-            );
+            Help help = new Help();
+            help.ShowDialog();
         }
     }
 }

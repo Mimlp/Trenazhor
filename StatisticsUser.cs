@@ -16,7 +16,7 @@ namespace KeyboardTrainer
     public partial class StatisticsUser : Form
     {
         private string connectionString =
-            "Host=localhost;Port=5432;Username=postgres;Password=root;Database=Trenazhor";
+            "Host=localhost;Port=5432;Username=postgres;Password=Krendel25;Database=Trenazhor";
         private List<double> userAccuracyData = new List<double>();
         private List<double> userSpeedData = new List<double>();
 
